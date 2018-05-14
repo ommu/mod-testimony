@@ -49,7 +49,7 @@ $this->params['menu']['content'] = [
 		],
 		[
 			'attribute' => 'member_search',
-			'value' => isset($model->member) ? $model->member->_name_sms : '-',
+			'value' => isset($model->member) ? $model->member->member_id : '-',
 		],
 		[
 			'attribute' => 'testimonial_message',

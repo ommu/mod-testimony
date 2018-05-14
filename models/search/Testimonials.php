@@ -28,7 +28,8 @@ class Testimonials extends TestimonialsModel
 	{
 		return [
 			[['testimonial_id', 'publish', 'cat_id', 'user_id', 'member_id', 'modified_id'], 'integer'],
-			[['testimonial_message', 'creation_date', 'modified_date', 'updated_date', 'category_search', 'member_search', 'user_search', 'modified_search'], 'safe'],
+			[['testimonial_message', 'creation_date', 'modified_date', 'updated_date',
+				'category_search', 'member_search', 'user_search', 'modified_search'], 'safe'],
 		];
 	}
 
@@ -73,13 +74,13 @@ class Testimonials extends TestimonialsModel
 		]);
 
 		$attributes = array_keys($this->getTableSchema()->columns);
-		$attributes['category_search'] = [
+		$attributes['cat_id'] = [
 			'asc' => ['category.message' => SORT_ASC],
 			'desc' => ['category.message' => SORT_DESC],
 		];
 		$attributes['member_search'] = [
-			'asc' => ['member._name_sms' => SORT_ASC],
-			'desc' => ['member._name_sms' => SORT_DESC],
+			'asc' => ['member.member_id' => SORT_ASC],
+			'desc' => ['member.member_id' => SORT_DESC],
 		];
 		$attributes['user_search'] = [
 			'asc' => ['user.displayname' => SORT_ASC],
@@ -125,7 +126,7 @@ class Testimonials extends TestimonialsModel
 
 		$query->andFilterWhere(['like', 't.testimonial_message', $this->testimonial_message])
 			->andFilterWhere(['like', 'category.message', $this->category_search])
-			->andFilterWhere(['like', 'member._name_sms', $this->member_search])
+			->andFilterWhere(['like', 'member.member_id', $this->member_search])
 			->andFilterWhere(['like', 'user.displayname', $this->user_search])
 			->andFilterWhere(['like', 'modified.displayname', $this->modified_search]);
 

@@ -8,7 +8,6 @@
  * Reference start
  * TOC :
  *	Index
- *	Create
  *	Update
  *	View
  *	Delete
@@ -86,32 +85,6 @@ class AdminController extends Controller
 	}
 
 	/**
-	 * Creates a new Testimonials model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 * @return mixed
-	 */
-	public function actionCreate()
-	{
-		$model = new Testimonials();
-
-		if(Yii::$app->request->isPost) {
-			$model->load(Yii::$app->request->post());
-			if($model->save()) {
-				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial success created.'));
-				return $this->redirect(['index']);
-				//return $this->redirect(['view', 'id' => $model->testimonial_id]);
-			} 
-		}
-
-		$this->view->title = Yii::t('app', 'Create Testimonial');
-		$this->view->description = '';
-		$this->view->keywords = '';
-		return $this->render('admin_create', [
-			'model' => $model,
-		]);
-	}
-
-	/**
 	 * Updates an existing Testimonials model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id
@@ -130,7 +103,7 @@ class AdminController extends Controller
 			}
 		}
 
-		$this->view->title = Yii::t('app', 'Update {model-class}: {cat-id}', ['model-class' => 'Testimonial', 'cat-id' => $model->category->title->message]);
+		$this->view->title = Yii::t('app', 'Update {model-class}: {user-id}', ['model-class' => 'Testimonial', 'user-id' => $model->user->displayname]);
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_update', [
@@ -147,7 +120,7 @@ class AdminController extends Controller
 	{
 		$model = $this->findModel($id);
 
-		$this->view->title = Yii::t('app', 'Detail {model-class}: {cat-id}', ['model-class' => 'Testimonial', 'cat-id' => $model->category->title->message]);
+		$this->view->title = Yii::t('app', 'Detail {model-class}: {user-id}', ['model-class' => 'Testimonial', 'user-id' => $model->user->displayname]);
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_view', [

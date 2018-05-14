@@ -42,7 +42,7 @@ class Testimonials extends \app\components\ActiveRecord
 {
 	use \ommu\traits\GridViewTrait;
 
-	public $gridForbiddenColumn = [];
+	public $gridForbiddenColumn = ['modified_date','modified_search','updated_date'];
 
 	// Variable Search
 	public $category_search;
@@ -72,7 +72,7 @@ class Testimonials extends \app\components\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['testimonial_message'], 'required'],
+			[['cat_id', 'testimonial_message'], 'required'],
 			[['publish', 'cat_id', 'user_id', 'member_id', 'modified_id'], 'integer'],
 			[['testimonial_message'], 'string'],
 			[['creation_date', 'modified_date', 'updated_date'], 'safe'],
@@ -159,8 +159,9 @@ class Testimonials extends \app\components\ActiveRecord
 			'contentOptions' => ['class'=>'center'],
 		];
 		if(!Yii::$app->request->get('category')) {
-			$this->templateColumns['category_search'] = [
-				'attribute' => 'category_search',
+			$this->templateColumns['cat_id'] = [
+				'attribute' => 'cat_id',
+				'filter' => TestimonialCategory::getCategory(),
 				'value' => function($model, $key, $index, $column) {
 					return isset($model->category) ? $model->category->category_name : '-';
 				},
@@ -178,7 +179,7 @@ class Testimonials extends \app\components\ActiveRecord
 			$this->templateColumns['member_search'] = [
 				'attribute' => 'member_search',
 				'value' => function($model, $key, $index, $column) {
-					return isset($model->member) ? $model->member->_name_sms : '-';
+					return isset($model->member) ? $model->member->member_id : '-';
 				},
 			];
 		}
@@ -291,56 +292,22 @@ class Testimonials extends \app\components\ActiveRecord
 	}
 
 	/**
-	 * after validate attributes
-	 */
-	public function afterValidate()
-	{
-		parent::afterValidate();
-
-		// Create action
-		
-		return true;
-	}
-
-	/**
-	 * before save attributes
-	 */
-	public function beforeSave($insert)
-	{
-		if(parent::beforeSave($insert)) {
-			// Create action
-		}
-		return true;
-	}
-
-	/**
 	 * After save attributes
 	 */
 	public function afterSave($insert, $changedAttributes)
 	{
 		parent::afterSave($insert, $changedAttributes);
 
-		// Create action
-	}
-
-	/**
-	 * Before delete attributes
-	 */
-	public function beforeDelete()
-	{
-		if(parent::beforeDelete()) {
-			// Create action
+		if($insert) {
+			/*
+			Yii::$app->mailer->compose()
+				->setFrom('emailasale@gmail.com')
+				->setTo($model->user->email)
+				->setSubject(Yii::t('app', ''))
+				->setTextBody(Yii::t('app', 'Plain text content'))
+				->setHtmlBody('')
+				->send();
+			*/
 		}
-		return true;
-	}
-
-	/**
-	 * After delete attributes
-	 */
-	public function afterDelete()
-	{
-		parent::afterDelete();
-
-		// Create action
 	}
 }

@@ -18,7 +18,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Testimonials'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->category->title->message, 'url' => ['view', 'id' => $model->testimonial_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->user->displayname, 'url' => ['view', 'id' => $model->testimonial_id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 
 $this->params['menu']['content'] = [
