@@ -29,6 +29,7 @@ use yii\web\NotFoundHttpException;
 use app\components\Controller;
 use mdm\admin\components\AccessControl;
 use app\modules\testimonial\models\TestimonialSetting;
+use app\modules\testimonial\models\search\TestimonialCategory as TestimonialCategorySearch;
 
 class SettingController extends Controller
 {
@@ -69,6 +70,19 @@ class SettingController extends Controller
 	{
 		$this->layout = 'admin_default';
 
+		$searchModel = new TestimonialCategorySearch();
+		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+		$gridColumn = Yii::$app->request->get('GridColumn', null);
+		$cols = [];
+		if($gridColumn != null && count($gridColumn) > 0) {
+			foreach($gridColumn as $key => $val) {
+				if($gridColumn[$key] == 1)
+					$cols[] = $key;
+			}
+		}
+		$columns = $searchModel->getGridColumn($cols);
+
 		$model = TestimonialSetting::findOne(1);
 		if($model === null)
 			$model = new TestimonialSetting();
@@ -87,6 +101,9 @@ class SettingController extends Controller
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_update', [
+			'searchModel' => $searchModel,
+			'dataProvider' => $dataProvider,
+			'columns' => $columns,
 			'model' => $model,
 		]);
 	}

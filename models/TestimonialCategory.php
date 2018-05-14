@@ -231,7 +231,7 @@ class TestimonialCategory extends \app\components\ActiveRecord
 				'attribute' => 'publish',
 				'filter' => $this->filterYesNo(),
 				'value' => function($model, $key, $index, $column) {
-					$url = Url::to(['publish', 'id'=>$model->primaryKey]);
+					$url = Url::to(['category/publish', 'id'=>$model->primaryKey]);
 					return $this->quickAction($url, $model->publish);
 				},
 				'contentOptions' => ['class'=>'center'],
