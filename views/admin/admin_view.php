@@ -52,8 +52,12 @@ $this->params['menu']['content'] = [
 			'value' => isset($model->member) ? $model->member->member_id : '-',
 		],
 		[
-			'attribute' => 'testimonial_message',
-			'value' => $model->testimonial_message ? $model->testimonial_message : '-',
+			'attribute' => 'testimony_rate',
+			'value' => $model->testimony_rate ? $model->testimony_rate : '-',
+		],
+		[
+			'attribute' => 'testimony_message',
+			'value' => $model->testimony_message ? $model->testimony_message : '-',
 		],
 		[
 			'attribute' => 'creation_date',

@@ -16,7 +16,8 @@
  * @property integer $cat_id
  * @property integer $user_id
  * @property integer $member_id
- * @property string $testimonial_message
+ * @property integer $testimony_rate
+ * @property string $testimony_message
  * @property string $creation_date
  * @property string $modified_date
  * @property integer $modified_id
@@ -72,10 +73,11 @@ class Testimonials extends \app\components\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['cat_id', 'testimonial_message'], 'required'],
-			[['publish', 'cat_id', 'user_id', 'member_id', 'modified_id'], 'integer'],
-			[['testimonial_message'], 'string'],
-			[['creation_date', 'modified_date', 'updated_date'], 'safe'],
+			[['cat_id', 'testimony_message'], 'required'],
+			[['publish', 'cat_id', 'user_id', 'member_id', 'testimony_rate', 'modified_id'], 'integer'],
+			[['testimony_message'], 'string'],
+			[['testimony_rate', 'creation_date', 'modified_date', 'updated_date'], 'safe'],
+			[['testimony_rate'], 'string', 'max' => 2],
 			[['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'user_id']],
 			[['member_id'], 'exist', 'skipOnError' => true, 'targetClass' => Members::className(), 'targetAttribute' => ['member_id' => 'member_id']],
 			[['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestimonialCategory::className(), 'targetAttribute' => ['cat_id' => 'cat_id']],
@@ -93,7 +95,8 @@ class Testimonials extends \app\components\ActiveRecord
 			'cat_id' => Yii::t('app', 'Category'),
 			'user_id' => Yii::t('app', 'User'),
 			'member_id' => Yii::t('app', 'Member'),
-			'testimonial_message' => Yii::t('app', 'Testimonial Message'),
+			'testimony_rate' => Yii::t('app', 'Rate'),
+			'testimony_message' => Yii::t('app', 'Message'),
 			'creation_date' => Yii::t('app', 'Creation Date'),
 			'modified_date' => Yii::t('app', 'Modified Date'),
 			'modified_id' => Yii::t('app', 'Modified'),
@@ -183,10 +186,16 @@ class Testimonials extends \app\components\ActiveRecord
 				},
 			];
 		}
-		$this->templateColumns['testimonial_message'] = [
-			'attribute' => 'testimonial_message',
+		$this->templateColumns['testimony_rate'] = [
+			'attribute' => 'testimony_rate',
 			'value' => function($model, $key, $index, $column) {
-				return $model->testimonial_message;
+				return isset($model->testimony_rate) ? $model->testimony_rate : '-';
+			},
+		];
+		$this->templateColumns['testimony_message'] = [
+			'attribute' => 'testimony_message',
+			'value' => function($model, $key, $index, $column) {
+				return $model->testimony_message;
 			},
 		];
 		$this->templateColumns['creation_date'] = [

@@ -27,8 +27,8 @@ class Testimonials extends TestimonialsModel
 	public function rules()
 	{
 		return [
-			[['testimonial_id', 'publish', 'cat_id', 'user_id', 'member_id', 'modified_id'], 'integer'],
-			[['testimonial_message', 'creation_date', 'modified_date', 'updated_date',
+			[['testimonial_id', 'publish', 'cat_id', 'user_id', 'member_id', 'testimony_rate', 'modified_id'], 'integer'],
+			[['testimony_message', 'creation_date', 'modified_date', 'updated_date',
 				'category_search', 'member_search', 'user_search', 'modified_search'], 'safe'],
 		];
 	}
@@ -109,6 +109,7 @@ class Testimonials extends TestimonialsModel
 			't.cat_id' => isset($params['category']) ? $params['category'] : $this->cat_id,
 			't.user_id' => isset($params['user']) ? $params['user'] : $this->user_id,
 			't.member_id' => isset($params['member']) ? $params['member'] : $this->member_id,
+			't.testimony_rate' => $this->testimony_rate,
 			'cast(t.creation_date as date)' => $this->creation_date,
 			'cast(t.modified_date as date)' => $this->modified_date,
 			't.modified_id' => isset($params['modified']) ? $params['modified'] : $this->modified_id,
@@ -124,7 +125,7 @@ class Testimonials extends TestimonialsModel
 				$query->andFilterWhere(['t.publish' => $this->publish]);
 		}
 
-		$query->andFilterWhere(['like', 't.testimonial_message', $this->testimonial_message])
+		$query->andFilterWhere(['like', 't.testimony_message', $this->testimony_message])
 			->andFilterWhere(['like', 'category.message', $this->category_search])
 			->andFilterWhere(['like', 'member.member_id', $this->member_search])
 			->andFilterWhere(['like', 'user.displayname', $this->user_search])

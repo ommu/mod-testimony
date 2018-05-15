@@ -32,7 +32,9 @@ use yii\widgets\ActiveForm;
 
 		<?php echo $form->field($model, 'member_search');?>
 
-		<?php echo $form->field($model, 'testimonial_message');?>
+		<?php echo $form->field($model, 'testimony_rate');?>
+
+		<?php echo $form->field($model, 'testimony_message');?>
 
 		<?php echo $form->field($model, 'creation_date')
 			->input('date');?>
