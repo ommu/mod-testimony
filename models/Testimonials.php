@@ -73,11 +73,11 @@ class Testimonials extends \app\components\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['cat_id', 'testimony_message'], 'required'],
+			[['testimony_message'], 'required'],
 			[['publish', 'cat_id', 'user_id', 'member_id', 'testimony_rate', 'modified_id'], 'integer'],
 			[['testimony_message'], 'string'],
-			[['testimony_rate', 'creation_date', 'modified_date', 'updated_date'], 'safe'],
-			[['testimony_rate'], 'integer', 'max' => 10],
+			[['cat_id', 'testimony_rate', 'creation_date', 'modified_date', 'updated_date'], 'safe'],
+			[['testimony_rate'], 'integer', 'max' => TestimonialSetting::getInfo('rate_scale')],
 			[['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'user_id']],
 			[['member_id'], 'exist', 'skipOnError' => true, 'targetClass' => Members::className(), 'targetAttribute' => ['member_id' => 'member_id']],
 			[['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestimonialCategory::className(), 'targetAttribute' => ['cat_id' => 'cat_id']],
@@ -296,6 +296,9 @@ class Testimonials extends \app\components\ActiveRecord
 				$this->user_id = !Yii::$app->user->isGuest ? Yii::$app->user->id : null;
 			else
 				$this->modified_id = !Yii::$app->user->isGuest ? Yii::$app->user->id : null;
+
+			if(isset($this->category) && $this->category->rate_status == 1)
+				$this->addError('testimony_rate', Yii::t('app', '{attribute} cannot be blank.', ['attribute'=>$this->getAttributeLabel('testimony_rate')]));
 		}
 		return true;
 	}
