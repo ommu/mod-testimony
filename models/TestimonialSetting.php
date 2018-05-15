@@ -16,6 +16,7 @@
  * @property integer $permission
  * @property string $meta_keyword
  * @property string $meta_description
+ * @property integer $rate_scale
  * @property string $modified_date
  * @property integer $modified_id
  *
@@ -62,10 +63,11 @@ class TestimonialSetting extends \app\components\ActiveRecord
 	public function rules()
 	{
 		return [
-			[['license', 'permission', 'meta_keyword', 'meta_description'], 'required'],
-			[['permission', 'modified_id'], 'integer'],
+			[['license', 'permission', 'meta_keyword', 'meta_description', 'rate_scale'], 'required'],
+			[['permission', 'rate_scale', 'modified_id'], 'integer'],
 			[['meta_keyword', 'meta_description'], 'string'],
 			[['modified_date'], 'safe'],
+			[['rate_scale'], 'integer', 'max' => 10],
 			[['license'], 'string', 'max' => 32],
 		];
 	}
@@ -81,6 +83,7 @@ class TestimonialSetting extends \app\components\ActiveRecord
 			'permission' => Yii::t('app', 'Permission'),
 			'meta_keyword' => Yii::t('app', 'Meta Keyword'),
 			'meta_description' => Yii::t('app', 'Meta Description'),
+			'rate_scale' => Yii::t('app', 'Rate Scale'),
 			'modified_date' => Yii::t('app', 'Modified Date'),
 			'modified_id' => Yii::t('app', 'Modified'),
 			'modified_search' => Yii::t('app', 'Modified'),
@@ -123,6 +126,12 @@ class TestimonialSetting extends \app\components\ActiveRecord
 			'attribute' => 'meta_description',
 			'value' => function($model, $key, $index, $column) {
 				return $model->meta_description;
+			},
+		];
+		$this->templateColumns['rate_scale'] = [
+			'attribute' => 'rate_scale',
+			'value' => function($model, $key, $index, $column) {
+				return $model->rate_scale;
 			},
 		];
 		$this->templateColumns['modified_date'] = [

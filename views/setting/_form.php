@@ -54,6 +54,10 @@ echo $form->field($model, 'permission', ['template' => '{label}<div class="col-m
 	->textarea(['rows'=>2,'rows'=>6])
 	->label($model->getAttributeLabel('meta_description'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']); ?>
 
+<?php echo $form->field($model, 'rate_scale', ['template' => '{label}<div class="col-md-9 col-sm-9 col-xs-12">{input}{error}</div>'])
+	->textInput(['type' => 'number', 'min' => '1', 'maxlength' => true])
+	->label($model->getAttributeLabel('rate_scale'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']); ?>
+
 <div class="ln_solid"></div>
 <div class="form-group">
 	<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">

@@ -77,7 +77,7 @@ class Testimonials extends \app\components\ActiveRecord
 			[['publish', 'cat_id', 'user_id', 'member_id', 'testimony_rate', 'modified_id'], 'integer'],
 			[['testimony_message'], 'string'],
 			[['testimony_rate', 'creation_date', 'modified_date', 'updated_date'], 'safe'],
-			[['testimony_rate'], 'string', 'max' => 2],
+			[['testimony_rate'], 'integer', 'max' => 10],
 			[['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'user_id']],
 			[['member_id'], 'exist', 'skipOnError' => true, 'targetClass' => Members::className(), 'targetAttribute' => ['member_id' => 'member_id']],
 			[['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestimonialCategory::className(), 'targetAttribute' => ['cat_id' => 'cat_id']],
