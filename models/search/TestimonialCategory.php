@@ -27,7 +27,7 @@ class TestimonialCategory extends TestimonialCategoryModel
 	public function rules()
 	{
 		return [
-			[['cat_id', 'publish', 'category_name', 'category_desc', 'creation_id', 'modified_id'], 'integer'],
+			[['cat_id', 'publish', 'rate_status', 'category_name', 'category_desc', 'creation_id', 'modified_id'], 'integer'],
 			[['profile_alow', 'creation_date', 'modified_date', 'updated_date', 'category_name_i', 'category_desc_i', 'creation_search', 'modified_search'], 'safe'],
 		];
 	}
@@ -105,6 +105,7 @@ class TestimonialCategory extends TestimonialCategoryModel
 		// grid filtering conditions
 		$query->andFilterWhere([
 			't.cat_id' => $this->cat_id,
+			't.rate_status' => $this->rate_status,
 			't.category_name' => $this->category_name,
 			't.category_desc' => $this->category_desc,
 			'cast(t.creation_date as date)' => $this->creation_date,

@@ -26,6 +26,9 @@ use yii\widgets\ActiveForm;
 		<?php echo $form->field($model, 'publish')
 			->checkbox();?>
 
+		<?php echo $form->field($model, 'rate_status')
+			->checkbox();?>
+
 		<?php echo $form->field($model, 'category_name_i');?>
 
 		<?php echo $form->field($model, 'category_desc_i');?>

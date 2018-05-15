@@ -13,6 +13,7 @@
  * The followings are the available columns in table "ommu_testimonial_category":
  * @property integer $cat_id
  * @property integer $publish
+ * @property integer $rate_status
  * @property integer $category_name
  * @property integer $category_desc
  * @property string $profile_alow
@@ -75,7 +76,7 @@ class TestimonialCategory extends \app\components\ActiveRecord
 	{
 		return [
 			[['category_name_i', 'category_desc_i'], 'required'],
-			[['publish', 'category_name', 'category_desc', 'creation_id', 'modified_id'], 'integer'],
+			[['publish', 'rate_status', 'category_name', 'category_desc', 'creation_id', 'modified_id'], 'integer'],
 			[['category_name_i', 'category_desc_i'], 'string'],
 			//[['profile_alow'], 'serialize'],
 			[['profile_alow', 'creation_date', 'modified_date', 'updated_date'], 'safe'],
@@ -92,6 +93,7 @@ class TestimonialCategory extends \app\components\ActiveRecord
 		return [
 			'cat_id' => Yii::t('app', 'Category'),
 			'publish' => Yii::t('app', 'Publish'),
+			'rate_status' => Yii::t('app', 'Rate'),
 			'category_name' => Yii::t('app', 'Category'),
 			'category_desc' => Yii::t('app', 'Description'),
 			'profile_alow' => Yii::t('app', 'Profile Alow'),
@@ -225,6 +227,16 @@ class TestimonialCategory extends \app\components\ActiveRecord
 				return !in_array($model->updated_date, ['0000-00-00 00:00:00','1970-01-01 00:00:00','0002-12-02 07:07:12','-0001-11-30 00:00:00']) ? Yii::$app->formatter->format($model->updated_date, 'datetime') : '-';
 			},
 			'format' => 'html',
+		];
+		$this->templateColumns['rate_status'] = [
+			'attribute' => 'rate_status',
+			'filter' => $this->filterYesNo(),
+			'value' => function($model, $key, $index, $column) {
+				$url = Url::to(['category/rate', 'id'=>$model->primaryKey]);
+				return $this->quickAction($url, $model->rate_status, 'Enable,Disable');
+			},
+			'contentOptions' => ['class'=>'center'],
+			'format' => 'raw',
 		];
 		if(!Yii::$app->request->get('trash')) {
 			$this->templateColumns['publish'] = [

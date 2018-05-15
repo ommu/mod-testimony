@@ -13,6 +13,7 @@
  *	View
  *	Delete
  *	RunAction
+ *	Rate
  *	Publish
  *
  *	findModel
@@ -51,6 +52,7 @@ class CategoryController extends Controller
 				'actions' => [
 					'delete' => ['POST'],
 					'publish' => ['POST'],
+					'rate' => ['POST'],
 				],
 			],
 		];
@@ -186,6 +188,24 @@ class CategoryController extends Controller
 		$model->publish = $replace;
 
 		if($model->save(false, ['publish'])) {
+			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial category success updated.'));
+			return $this->redirect(['index']);
+		}
+	}
+
+	/**
+	 * actionRate an existing TestimonialCategory model.
+	 * If rate is successful, the browser will be redirected to the 'index' page.
+	 * @param integer $id
+	 * @return mixed
+	 */
+	public function actionRate($id)
+	{
+		$model = $this->findModel($id);
+		$replace = $model->rate_status == 1 ? 0 : 1;
+		$model->rate_status = $replace;
+
+		if($model->save(false, ['rate_status'])) {
 			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial category success updated.'));
 			return $this->redirect(['index']);
 		}

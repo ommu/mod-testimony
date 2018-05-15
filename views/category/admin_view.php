@@ -40,6 +40,11 @@ $this->params['menu']['content'] = [
 			'format' => 'raw',
 		],
 		[
+			'attribute' => 'rate_status',
+			'value' => $this->quickAction(Url::to(['rate', 'id'=>$model->primaryKey]), $model->rate_status, 'Enable,Disable'),
+			'format' => 'raw',
+		],
+		[
 			'attribute' => 'category_name_i',
 			'value' => isset($model->title) ? $model->title->message : '-',
 		],
