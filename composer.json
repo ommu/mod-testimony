@@ -6,7 +6,7 @@
 		"module",
 		"testimonial",
 		"ommu",
-		"ommu platform"
+		"ommu-platform"
 	],
 	"homepage": "https://github.com/ommu/mod-testimonial",
 	"type": "ommu-module",
