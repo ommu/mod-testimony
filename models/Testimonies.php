@@ -36,8 +36,8 @@ namespace ommu\testimony\models;
 use Yii;
 use yii\helpers\Url;
 use yii\helpers\Html;
-use app\modules\user\models\Users;
-use app\modules\member\models\Members;
+use ommu\users\models\Users;
+use ommu\member\models\Members;
 
 class Testimonies extends \app\components\ActiveRecord
 {
