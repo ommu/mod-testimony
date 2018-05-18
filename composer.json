@@ -1,24 +1,24 @@
 {
-	"name": "ommu/testimonial",
-	"description": "Testimonial Module from Ommu Platform",
+	"name": "ommu/mod-testimony",
+	"description": "Testimony Module from Ommu Platform",
 	"keywords": [
-		"yii2",
 		"module",
-		"testimonial",
+		"testimony",
 		"ommu",
-		"ommu-platform"
+		"ommu-platform",
+		"yii2"
 	],
-	"homepage": "https://github.com/ommu/mod-testimonial",
+	"homepage": "https://github.com/ommu/mod-testimony",
 	"type": "ommu-module",
 	"license": "Apache-2.0",
 	"support": {
-		"issues": "https://github.com/ommu/mod-testimonial/issues",
-		"wiki": "https://github.com/ommu/mod-testimonial/wiki",
-		"source": "https://github.com/ommu/mod-testimonial"
+		"issues": "https://github.com/ommu/mod-testimony/issues",
+		"wiki": "https://github.com/ommu/mod-testimony/wiki",
+		"source": "https://github.com/ommu/mod-testimony"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ommu/mod-testimonial.git"
+		"url": "https://github.com/ommu/mod-testimony.git"
 	},
 	"authors": [
 		{
@@ -36,10 +36,11 @@
 		"oomphinc/composer-installers-extender": "^1.0",
 		"yiisoft/yii2": "~2.0.13",
 		"yiisoft/yii2-jui": "^2.0",
-		"yiisoft/yii2-swiftmailer": "~2.0.0",
 		"mdmsoft/yii2-admin": "^2.7",
 		"components/jqueryui": "~1.10",
-		"ommu/yii2-traits": "*"
+		"ommu/yii2-traits": "*",
+		"yiisoft/yii2-swiftmailer": "~2.0.0",
+		"dimd4/yii2-redactor": "^1.0"
 	},
 	"suggest": {
 		"components/jqueryui": "move to bower/jquery-ui or bower-asset/jquery-ui"
