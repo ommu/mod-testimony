@@ -1,6 +1,6 @@
 <?php
 /**
- * TestimonialCategory
+ * TestimonyCategory
  * 
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -24,7 +24,7 @@
  * @property string $updated_date
  *
  * The followings are the available model relations:
- * @property Testimonials[] $testimonials
+ * @property Testimonies[] $testimonies
  * @property SourceMessage $title
  * @property SourceMessage $description
  * @property Users $creation
@@ -32,7 +32,7 @@
  *
  */
 
-namespace app\modules\testimonial\models;
+namespace ommu\testimony\models;
 
 use Yii;
 use yii\helpers\Url;
@@ -40,7 +40,7 @@ use yii\helpers\Html;
 use app\models\SourceMessage;
 use app\modules\user\models\Users;
 
-class TestimonialCategory extends \app\components\ActiveRecord
+class TestimonyCategory extends \app\components\ActiveRecord
 {
 	use \ommu\traits\UtilityTrait;
 	use \ommu\traits\GridViewTrait;
@@ -112,9 +112,9 @@ class TestimonialCategory extends \app\components\ActiveRecord
 	/**
 	 * @return \yii\db\ActiveQuery
 	 */
-	public function getTestimonials()
+	public function getTestimonies()
 	{
-		return $this->hasMany(Testimonials::className(), ['cat_id' => 'cat_id']);
+		return $this->hasMany(Testimonies::className(), ['cat_id' => 'cat_id']);
 	}
 
 	/**
@@ -151,11 +151,11 @@ class TestimonialCategory extends \app\components\ActiveRecord
 
 	/**
 	 * @inheritdoc
-	 * @return \app\modules\testimonial\models\query\TestimonialCategoryQuery the active query used by this AR class.
+	 * @return \ommu\testimony\models\query\TestimonyCategoryQuery the active query used by this AR class.
 	 */
 	public static function find()
 	{
-		return new \app\modules\testimonial\models\query\TestimonialCategoryQuery(get_called_class());
+		return new \ommu\testimony\models\query\TestimonyCategoryQuery(get_called_class());
 	}
 
 	/**

@@ -1,6 +1,6 @@
 <?php
 /**
- * testimonial module definition class
+ * testimony module definition class
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -10,7 +10,7 @@
  *
  */
 
-namespace app\modules\testimonial;
+namespace ommu\testimony;
 
 class Module extends \app\components\Module
 {
@@ -19,7 +19,7 @@ class Module extends \app\components\Module
 	/**
 	 * @inheritdoc
 	 */
-	public $controllerNamespace = 'app\modules\testimonial\controllers';
+	public $controllerNamespace = 'ommu\testimony\controllers';
 
 	/**
 	 * @inheritdoc

@@ -1,9 +1,9 @@
 <?php
 /**
- * Testimonial Categories (testimonial-category)
+ * Testimony Categories (testimony-category)
  * @var $this yii\web\View
- * @var $this app\modules\testimonial\controllers\CategoryController
- * @var $model app\modules\testimonial\models\search\TestimonialCategory
+ * @var $this ommu\testimony\controllers\CategoryController
+ * @var $model ommu\testimony\models\search\TestimonyCategory
  * @var $form yii\widgets\ActiveForm
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>

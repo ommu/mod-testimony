@@ -1,9 +1,9 @@
 <?php
 /**
- * Testimonials (testimonials)
+ * Testimonies (testimonies)
  * @var $this yii\web\View
- * @var $this app\modules\testimonial\controllers\AdminController
- * @var $model app\modules\testimonial\models\Testimonials
+ * @var $this ommu\testimony\controllers\AdminController
+ * @var $model ommu\testimony\models\Testimonies
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -43,16 +43,16 @@ array_push($columnData, [
 	'buttons' => [
 		'view' => function ($url, $model, $key) {
 			$url = Url::to(['view', 'id'=>$model->primaryKey]);
-			return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => Yii::t('app', 'Detail Testimonial')]);
+			return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => Yii::t('app', 'Detail Testimony')]);
 		},
 		'update' => function ($url, $model, $key) {
 			$url = Url::to(['update', 'id'=>$model->primaryKey]);
-			return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['title' => Yii::t('app', 'Update Testimonial')]);
+			return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['title' => Yii::t('app', 'Update Testimony')]);
 		},
 		'delete' => function ($url, $model, $key) {
 			$url = Url::to(['delete', 'id'=>$model->primaryKey]);
 			return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-				'title' => Yii::t('app', 'Delete Testimonial'),
+				'title' => Yii::t('app', 'Delete Testimony'),
 				'data-confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
 				'data-method'  => 'post',
 			]);

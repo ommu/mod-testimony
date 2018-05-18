@@ -1,8 +1,8 @@
 <?php
 /**
- * Testimonials
+ * Testimonies
  *
- * Testimonials represents the model behind the search form about `app\modules\testimonial\models\Testimonials`.
+ * Testimonies represents the model behind the search form about `ommu\testimony\models\Testimonies`.
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -12,14 +12,14 @@
  *
  */
 
-namespace app\modules\testimonial\models\search;
+namespace ommu\testimony\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\testimonial\models\Testimonials as TestimonialsModel;
+use ommu\testimony\models\Testimonies as TestimoniesModel;
 
-class Testimonials extends TestimonialsModel
+class Testimonies extends TestimoniesModel
 {
 	/**
 	 * @inheritdoc
@@ -60,7 +60,7 @@ class Testimonials extends TestimonialsModel
 	 */
 	public function search($params)
 	{
-		$query = TestimonialsModel::find()->alias('t');
+		$query = TestimoniesModel::find()->alias('t');
 		$query->joinWith([
 			'category.title category', 
 			'member member', 

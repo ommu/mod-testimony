@@ -2,9 +2,9 @@
 /**
  * AdminController
  * @var $this yii\web\View
- * @var $model app\modules\testimonial\models\Testimonials
+ * @var $model ommu\testimony\models\Testimonies
  *
- * AdminController implements the CRUD actions for Testimonials model.
+ * AdminController implements the CRUD actions for Testimonies model.
  * Reference start
  * TOC :
  *	Index
@@ -24,15 +24,15 @@
  *
  */
  
-namespace app\modules\testimonial\controllers;
+namespace ommu\testimony\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use app\components\Controller;
 use mdm\admin\components\AccessControl;
-use app\modules\testimonial\models\Testimonials;
-use app\modules\testimonial\models\search\Testimonials as TestimonialsSearch;
+use ommu\testimony\models\Testimonies;
+use ommu\testimony\models\search\Testimonies as TestimoniesSearch;
 
 class AdminController extends Controller
 {
@@ -56,12 +56,12 @@ class AdminController extends Controller
 	}
 
 	/**
-	 * Lists all Testimonials models.
+	 * Lists all Testimonies models.
 	 * @return mixed
 	 */
 	public function actionIndex()
 	{
-		$searchModel = new TestimonialsSearch();
+		$searchModel = new TestimoniesSearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
 		$gridColumn = Yii::$app->request->get('GridColumn', null);
@@ -74,7 +74,7 @@ class AdminController extends Controller
 		}
 		$columns = $searchModel->getGridColumn($cols);
 
-		$this->view->title = Yii::t('app', 'Testimonials');
+		$this->view->title = Yii::t('app', 'Testimonies');
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_index', [
@@ -85,7 +85,7 @@ class AdminController extends Controller
 	}
 
 	/**
-	 * Updates an existing Testimonials model.
+	 * Updates an existing Testimonies model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id
 	 * @return mixed
@@ -97,13 +97,13 @@ class AdminController extends Controller
 			$model->load(Yii::$app->request->post());
 
 			if($model->save()) {
-				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial success updated.'));
+				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony success updated.'));
 				return $this->redirect(['index']);
 				//return $this->redirect(['view', 'id' => $model->testimonial_id]);
 			}
 		}
 
-		$this->view->title = Yii::t('app', 'Update {model-class}: {user-id}', ['model-class' => 'Testimonial', 'user-id' => $model->user->displayname]);
+		$this->view->title = Yii::t('app', 'Update {model-class}: {user-id}', ['model-class' => 'Testimony', 'user-id' => $model->user->displayname]);
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_update', [
@@ -112,7 +112,7 @@ class AdminController extends Controller
 	}
 
 	/**
-	 * Displays a single Testimonials model.
+	 * Displays a single Testimonies model.
 	 * @param integer $id
 	 * @return mixed
 	 */
@@ -120,7 +120,7 @@ class AdminController extends Controller
 	{
 		$model = $this->findModel($id);
 
-		$this->view->title = Yii::t('app', 'Detail {model-class}: {user-id}', ['model-class' => 'Testimonial', 'user-id' => $model->user->displayname]);
+		$this->view->title = Yii::t('app', 'Detail {model-class}: {user-id}', ['model-class' => 'Testimony', 'user-id' => $model->user->displayname]);
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_view', [
@@ -129,7 +129,7 @@ class AdminController extends Controller
 	}
 
 	/**
-	 * Deletes an existing Testimonials model.
+	 * Deletes an existing Testimonies model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id
 	 * @return mixed
@@ -140,14 +140,14 @@ class AdminController extends Controller
 		$model->publish = 2;
 
 		if($model->save(false, ['publish'])) {
-			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial success deleted.'));
+			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony success deleted.'));
 			return $this->redirect(['index']);
 			//return $this->redirect(['view', 'id' => $model->testimonial_id]);
 		}
 	}
 
 	/**
-	 * actionPublish an existing Testimonials model.
+	 * actionPublish an existing Testimonies model.
 	 * If publish is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id
 	 * @return mixed
@@ -159,21 +159,21 @@ class AdminController extends Controller
 		$model->publish = $replace;
 
 		if($model->save(false, ['publish'])) {
-			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial success updated.'));
+			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony success updated.'));
 			return $this->redirect(['index']);
 		}
 	}
 
 	/**
-	 * Finds the Testimonials model based on its primary key value.
+	 * Finds the Testimonies model based on its primary key value.
 	 * If the model is not found, a 404 HTTP exception will be thrown.
 	 * @param integer $id
-	 * @return Testimonials the loaded model
+	 * @return Testimonies the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	protected function findModel($id)
 	{
-		if(($model = Testimonials::findOne($id)) !== null) 
+		if(($model = Testimonies::findOne($id)) !== null) 
 			return $model;
 		else
 			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));

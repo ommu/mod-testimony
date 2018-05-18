@@ -1,9 +1,9 @@
 <?php
 /**
- * Testimonial Categories (testimonial-category)
+ * Testimony Categories (testimony-category)
  * @var $this yii\web\View
- * @var $this app\modules\testimonial\controllers\CategoryController
- * @var $model app\modules\testimonial\models\TestimonialCategory
+ * @var $this ommu\testimony\controllers\CategoryController
+ * @var $model ommu\testimony\models\TestimonyCategory
  * @var $form yii\widgets\ActiveForm
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
@@ -17,7 +17,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Testimonial Categories'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Testimony Categories'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title->message, 'url' => ['view', 'id' => $model->cat_id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 

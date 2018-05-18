@@ -1,9 +1,9 @@
 <?php
 /**
- * Testimonials (testimonials)
+ * Testimonies (testimonies)
  * @var $this yii\web\View
- * @var $this app\modules\testimonial\controllers\AdminController
- * @var $model app\modules\testimonial\models\Testimonials
+ * @var $this ommu\testimony\controllers\AdminController
+ * @var $model ommu\testimony\models\Testimonies
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -17,7 +17,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Testimonials'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Testimonies'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->params['menu']['content'] = [

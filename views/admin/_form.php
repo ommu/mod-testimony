@@ -1,9 +1,9 @@
 <?php
 /**
- * Testimonials (testimonials)
+ * Testimonies (testimonies)
  * @var $this yii\web\View
- * @var $this app\modules\testimonial\controllers\AdminController
- * @var $model app\modules\testimonial\models\Testimonials
+ * @var $this ommu\testimony\controllers\AdminController
+ * @var $model ommu\testimony\models\Testimonies
  * @var $form yii\widgets\ActiveForm
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
@@ -16,7 +16,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use app\modules\testimonial\models\TestimonialCategory;
+use ommu\testimony\models\TestimonyCategory;
 ?>
 
 <?php $form = ActiveForm::begin([
@@ -44,7 +44,7 @@ echo $form->field($model, 'member_id', ['template' => '{label}<div class="col-md
 	->label($model->getAttributeLabel('member_id'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']); ?>
 
 <?php 
-$cat_id = TestimonialCategory::getCategory(1);
+$cat_id = TestimonyCategory::getCategory(1);
 echo $form->field($model, 'cat_id', ['template' => '{label}<div class="col-md-9 col-sm-9 col-xs-12">{input}{error}</div>'])
 	->dropDownList($cat_id, ['prompt'=>''])
 	->label($model->getAttributeLabel('cat_id'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']); ?>

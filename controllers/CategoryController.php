@@ -2,9 +2,9 @@
 /**
  * CategoryController
  * @var $this yii\web\View
- * @var $model app\modules\testimonial\models\TestimonialCategory
+ * @var $model ommu\testimony\models\TestimonyCategory
  *
- * CategoryController implements the CRUD actions for TestimonialCategory model.
+ * CategoryController implements the CRUD actions for TestimonyCategory model.
  * Reference start
  * TOC :
  *	Index
@@ -26,15 +26,15 @@
  *
  */
  
-namespace app\modules\testimonial\controllers;
+namespace ommu\testimony\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use app\components\Controller;
 use mdm\admin\components\AccessControl;
-use app\modules\testimonial\models\TestimonialCategory;
-use app\modules\testimonial\models\search\TestimonialCategory as TestimonialCategorySearch;
+use ommu\testimony\models\TestimonyCategory;
+use ommu\testimony\models\search\TestimonyCategory as TestimonyCategorySearch;
 
 class CategoryController extends Controller
 {
@@ -59,12 +59,12 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * Lists all TestimonialCategory models.
+	 * Lists all TestimonyCategory models.
 	 * @return mixed
 	 */
 	public function actionIndex()
 	{
-		$searchModel = new TestimonialCategorySearch();
+		$searchModel = new TestimonyCategorySearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
 		$gridColumn = Yii::$app->request->get('GridColumn', null);
@@ -77,7 +77,7 @@ class CategoryController extends Controller
 		}
 		$columns = $searchModel->getGridColumn($cols);
 
-		$this->view->title = Yii::t('app', 'Testimonial Categories');
+		$this->view->title = Yii::t('app', 'Testimony Categories');
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_index', [
@@ -88,24 +88,24 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * Creates a new TestimonialCategory model.
+	 * Creates a new TestimonyCategory model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 * @return mixed
 	 */
 	public function actionCreate()
 	{
-		$model = new TestimonialCategory();
+		$model = new TestimonyCategory();
 
 		if(Yii::$app->request->isPost) {
 			$model->load(Yii::$app->request->post());
 			if($model->save()) {
-				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial category success created.'));
+				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony category success created.'));
 				return $this->redirect(['index']);
 				//return $this->redirect(['view', 'id' => $model->cat_id]);
 			} 
 		}
 
-		$this->view->title = Yii::t('app', 'Create Testimonial Category');
+		$this->view->title = Yii::t('app', 'Create Testimony Category');
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_create', [
@@ -114,7 +114,7 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * Updates an existing TestimonialCategory model.
+	 * Updates an existing TestimonyCategory model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id
 	 * @return mixed
@@ -126,13 +126,13 @@ class CategoryController extends Controller
 			$model->load(Yii::$app->request->post());
 
 			if($model->save()) {
-				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial category success updated.'));
+				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony category success updated.'));
 				return $this->redirect(['index']);
 				//return $this->redirect(['view', 'id' => $model->cat_id]);
 			}
 		}
 
-		$this->view->title = Yii::t('app', 'Update {model-class}: {category-name}', ['model-class' => 'Testimonial Category', 'category-name' => $model->title->message]);
+		$this->view->title = Yii::t('app', 'Update {model-class}: {category-name}', ['model-class' => 'Testimony Category', 'category-name' => $model->title->message]);
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_update', [
@@ -141,7 +141,7 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * Displays a single TestimonialCategory model.
+	 * Displays a single TestimonyCategory model.
 	 * @param integer $id
 	 * @return mixed
 	 */
@@ -149,7 +149,7 @@ class CategoryController extends Controller
 	{
 		$model = $this->findModel($id);
 
-		$this->view->title = Yii::t('app', 'Detail {model-class}: {category-name}', ['model-class' => 'Testimonial Category', 'category-name' => $model->title->message]);
+		$this->view->title = Yii::t('app', 'Detail {model-class}: {category-name}', ['model-class' => 'Testimony Category', 'category-name' => $model->title->message]);
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_view', [
@@ -158,7 +158,7 @@ class CategoryController extends Controller
 	}
 
 	/**
-	 * Deletes an existing TestimonialCategory model.
+	 * Deletes an existing TestimonyCategory model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id
 	 * @return mixed
@@ -169,14 +169,14 @@ class CategoryController extends Controller
 		$model->publish = 2;
 
 		if($model->save(false, ['publish'])) {
-			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial category success deleted.'));
+			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony category success deleted.'));
 			return $this->redirect(['index']);
 			//return $this->redirect(['view', 'id' => $model->cat_id]);
 		}
 	}
 
 	/**
-	 * actionPublish an existing TestimonialCategory model.
+	 * actionPublish an existing TestimonyCategory model.
 	 * If publish is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id
 	 * @return mixed
@@ -188,13 +188,13 @@ class CategoryController extends Controller
 		$model->publish = $replace;
 
 		if($model->save(false, ['publish'])) {
-			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial category success updated.'));
+			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony category success updated.'));
 			return $this->redirect(['index']);
 		}
 	}
 
 	/**
-	 * actionRate an existing TestimonialCategory model.
+	 * actionRate an existing TestimonyCategory model.
 	 * If rate is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id
 	 * @return mixed
@@ -206,21 +206,21 @@ class CategoryController extends Controller
 		$model->rate_status = $replace;
 
 		if($model->save(false, ['rate_status'])) {
-			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial category success updated.'));
+			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony category success updated.'));
 			return $this->redirect(['index']);
 		}
 	}
 
 	/**
-	 * Finds the TestimonialCategory model based on its primary key value.
+	 * Finds the TestimonyCategory model based on its primary key value.
 	 * If the model is not found, a 404 HTTP exception will be thrown.
 	 * @param integer $id
-	 * @return TestimonialCategory the loaded model
+	 * @return TestimonyCategory the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	protected function findModel($id)
 	{
-		if(($model = TestimonialCategory::findOne($id)) !== null) 
+		if(($model = TestimonyCategory::findOne($id)) !== null) 
 			return $model;
 		else
 			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));

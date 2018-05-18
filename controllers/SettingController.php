@@ -2,9 +2,9 @@
 /**
  * SettingController
  * @var $this yii\web\View
- * @var $model app\modules\testimonial\models\TestimonialSetting
+ * @var $model ommu\testimony\models\TestimonySetting
  *
- * SettingController implements the CRUD actions for TestimonialSetting model.
+ * SettingController implements the CRUD actions for TestimonySetting model.
  * Reference start
  * TOC :
  *  Index
@@ -21,15 +21,15 @@
  *
  */
  
-namespace app\modules\testimonial\controllers;
+namespace ommu\testimony\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use app\components\Controller;
 use mdm\admin\components\AccessControl;
-use app\modules\testimonial\models\TestimonialSetting;
-use app\modules\testimonial\models\search\TestimonialCategory as TestimonialCategorySearch;
+use ommu\testimony\models\TestimonySetting;
+use ommu\testimony\models\search\TestimonyCategory as TestimonyCategorySearch;
 
 class SettingController extends Controller
 {
@@ -52,7 +52,7 @@ class SettingController extends Controller
 	}
 
 	/**
-	 * Lists all TestimonialSetting models.
+	 * Lists all TestimonySetting models.
 	 * @return mixed
 	 */
 	public function actionIndex()
@@ -61,7 +61,7 @@ class SettingController extends Controller
 	}
 
 	/**
-	 * Updates an existing TestimonialSetting model.
+	 * Updates an existing TestimonySetting model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id
 	 * @return mixed
@@ -70,7 +70,7 @@ class SettingController extends Controller
 	{
 		$this->layout = 'admin_default';
 
-		$searchModel = new TestimonialCategorySearch();
+		$searchModel = new TestimonyCategorySearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
 		$gridColumn = Yii::$app->request->get('GridColumn', null);
@@ -83,21 +83,21 @@ class SettingController extends Controller
 		}
 		$columns = $searchModel->getGridColumn($cols);
 
-		$model = TestimonialSetting::findOne(1);
+		$model = TestimonySetting::findOne(1);
 		if($model === null)
-			$model = new TestimonialSetting();
+			$model = new TestimonySetting();
 
 		if(Yii::$app->request->isPost) {
 			$model->load(Yii::$app->request->post());
 
 			if($model->save()) {
-				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial setting success updated.'));
+				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony setting success updated.'));
 				return $this->redirect(['update']);
 				//return $this->redirect(['view', 'id' => $model->id]);
 			}
 		}
 
-		$this->view->title = Yii::t('app', 'Testimonial Settings');
+		$this->view->title = Yii::t('app', 'Testimony Settings');
 		$this->view->description = '';
 		$this->view->keywords = '';
 		return $this->render('admin_update', [
@@ -109,7 +109,7 @@ class SettingController extends Controller
 	}
 
 	/**
-	 * Deletes an existing TestimonialSetting model.
+	 * Deletes an existing TestimonySetting model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param integer $id
 	 * @return mixed
@@ -118,20 +118,20 @@ class SettingController extends Controller
 	{
 		$this->findModel($id)->delete();
 		
-		Yii::$app->session->setFlash('success', Yii::t('app', 'Testimonial setting success deleted.'));
+		Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony setting success deleted.'));
 		return $this->redirect(['index']);
 	}
 
 	/**
-	 * Finds the TestimonialSetting model based on its primary key value.
+	 * Finds the TestimonySetting model based on its primary key value.
 	 * If the model is not found, a 404 HTTP exception will be thrown.
 	 * @param integer $id
-	 * @return TestimonialSetting the loaded model
+	 * @return TestimonySetting the loaded model
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	protected function findModel($id)
 	{
-		if(($model = TestimonialSetting::findOne($id)) !== null) 
+		if(($model = TestimonySetting::findOne($id)) !== null) 
 			return $model;
 		else
 			throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));

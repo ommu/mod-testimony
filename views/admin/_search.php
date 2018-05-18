@@ -1,9 +1,9 @@
 <?php
 /**
- * Testimonials (testimonials)
+ * Testimonies (testimonies)
  * @var $this yii\web\View
- * @var $this app\modules\testimonial\controllers\AdminController
- * @var $model app\modules\testimonial\models\search\Testimonials
+ * @var $this ommu\testimony\controllers\AdminController
+ * @var $model ommu\testimony\models\search\Testimonies
  * @var $form yii\widgets\ActiveForm
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>

@@ -1,6 +1,6 @@
 <?php
 /**
- * TestimonialSetting
+ * TestimonySetting
  * 
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -25,14 +25,14 @@
  *
  */
 
-namespace app\modules\testimonial\models;
+namespace ommu\testimony\models;
 
 use Yii;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use app\modules\user\models\Users;
 
-class TestimonialSetting extends \app\components\ActiveRecord
+class TestimonySetting extends \app\components\ActiveRecord
 {
 	use \ommu\traits\GridViewTrait;
 

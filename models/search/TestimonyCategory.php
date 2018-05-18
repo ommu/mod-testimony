@@ -1,8 +1,8 @@
 <?php
 /**
- * TestimonialCategory
+ * TestimonyCategory
  *
- * TestimonialCategory represents the model behind the search form about `app\modules\testimonial\models\TestimonialCategory`.
+ * TestimonyCategory represents the model behind the search form about `ommu\testimony\models\TestimonyCategory`.
  *
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -12,14 +12,14 @@
  *
  */
 
-namespace app\modules\testimonial\models\search;
+namespace ommu\testimony\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\testimonial\models\TestimonialCategory as TestimonialCategoryModel;
+use ommu\testimony\models\TestimonyCategory as TestimonyCategoryModel;
 
-class TestimonialCategory extends TestimonialCategoryModel
+class TestimonyCategory extends TestimonyCategoryModel
 {
 	/**
 	 * @inheritdoc
@@ -59,7 +59,7 @@ class TestimonialCategory extends TestimonialCategoryModel
 	 */
 	public function search($params)
 	{
-		$query = TestimonialCategoryModel::find()->alias('t');
+		$query = TestimonyCategoryModel::find()->alias('t');
 		$query->joinWith([
 			'title title', 
 			'description description', 

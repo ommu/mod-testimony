@@ -1,6 +1,6 @@
 <?php
 /**
- * Testimonials
+ * Testimonies
  * 
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -26,12 +26,12 @@
  * The followings are the available model relations:
  * @property Users $user
  * @property Members $member
- * @property TestimonialCategory $category
+ * @property TestimonyCategory $category
  * @property Users $modified
  *
  */
 
-namespace app\modules\testimonial\models;
+namespace ommu\testimony\models;
 
 use Yii;
 use yii\helpers\Url;
@@ -39,7 +39,7 @@ use yii\helpers\Html;
 use app\modules\user\models\Users;
 use app\modules\member\models\Members;
 
-class Testimonials extends \app\components\ActiveRecord
+class Testimonies extends \app\components\ActiveRecord
 {
 	use \ommu\traits\GridViewTrait;
 
@@ -77,10 +77,10 @@ class Testimonials extends \app\components\ActiveRecord
 			[['publish', 'cat_id', 'user_id', 'member_id', 'testimony_rate', 'modified_id'], 'integer'],
 			[['testimony_message'], 'string'],
 			[['cat_id', 'testimony_rate', 'creation_date', 'modified_date', 'updated_date'], 'safe'],
-			[['testimony_rate'], 'integer', 'max' => TestimonialSetting::getInfo('rate_scale')],
+			[['testimony_rate'], 'integer', 'max' => TestimonySetting::getInfo('rate_scale')],
 			[['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'user_id']],
 			[['member_id'], 'exist', 'skipOnError' => true, 'targetClass' => Members::className(), 'targetAttribute' => ['member_id' => 'member_id']],
-			[['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestimonialCategory::className(), 'targetAttribute' => ['cat_id' => 'cat_id']],
+			[['cat_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestimonyCategory::className(), 'targetAttribute' => ['cat_id' => 'cat_id']],
 		];
 	}
 
@@ -90,7 +90,7 @@ class Testimonials extends \app\components\ActiveRecord
 	public function attributeLabels()
 	{
 		return [
-			'testimonial_id' => Yii::t('app', 'Testimonial'),
+			'testimonial_id' => Yii::t('app', 'Testimony'),
 			'publish' => Yii::t('app', 'Publish'),
 			'cat_id' => Yii::t('app', 'Category'),
 			'user_id' => Yii::t('app', 'User'),
@@ -129,7 +129,7 @@ class Testimonials extends \app\components\ActiveRecord
 	 */
 	public function getCategory()
 	{
-		return $this->hasOne(TestimonialCategory::className(), ['cat_id' => 'cat_id']);
+		return $this->hasOne(TestimonyCategory::className(), ['cat_id' => 'cat_id']);
 	}
 
 	/**
@@ -142,11 +142,11 @@ class Testimonials extends \app\components\ActiveRecord
 
 	/**
 	 * @inheritdoc
-	 * @return \app\modules\testimonial\models\query\TestimonialsQuery the active query used by this AR class.
+	 * @return \ommu\testimony\models\query\TestimoniesQuery the active query used by this AR class.
 	 */
 	public static function find()
 	{
-		return new \app\modules\testimonial\models\query\TestimonialsQuery(get_called_class());
+		return new \ommu\testimony\models\query\TestimoniesQuery(get_called_class());
 	}
 
 	/**
@@ -164,7 +164,7 @@ class Testimonials extends \app\components\ActiveRecord
 		if(!Yii::$app->request->get('category')) {
 			$this->templateColumns['cat_id'] = [
 				'attribute' => 'cat_id',
-				'filter' => TestimonialCategory::getCategory(),
+				'filter' => TestimonyCategory::getCategory(),
 				'value' => function($model, $key, $index, $column) {
 					return isset($model->category) ? $model->category->category_name : '-';
 				},
@@ -263,9 +263,9 @@ class Testimonials extends \app\components\ActiveRecord
 	}
 
 	/**
-	 * function getTestimonials
+	 * function getTestimonies
 	 */
-	public static function getTestimonial($publish=null, $array=true) 
+	public static function getTestimony($publish=null, $array=true) 
 	{
 		$model = self::find()->alias('t');
 		if($publish != null)

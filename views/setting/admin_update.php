@@ -1,9 +1,9 @@
 <?php
 /**
- * Testimonial Settings (testimonial-setting)
+ * Testimony Settings (testimony-setting)
  * @var $this yii\web\View
- * @var $this app\modules\testimonial\controllers\SettingController
- * @var $model app\modules\testimonial\models\TestimonialSetting
+ * @var $this ommu\testimony\controllers\SettingController
+ * @var $model ommu\testimony\models\TestimonySetting
  * @var $form yii\widgets\ActiveForm
  * 
  * @author Putra Sudaryanto <putra@sudaryanto.id>
@@ -69,16 +69,16 @@ array_push($columnData, [
 	'buttons' => [
 		'view' => function ($url, $model, $key) {
 			$url = Url::to(['category/view', 'id'=>$model->primaryKey]);
-			return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => Yii::t('app', 'Detail Testimonial Category')]);
+			return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, ['title' => Yii::t('app', 'Detail Testimony Category')]);
 		},
 		'update' => function ($url, $model, $key) {
 			$url = Url::to(['category/update', 'id'=>$model->primaryKey]);
-			return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['title' => Yii::t('app', 'Update Testimonial Category')]);
+			return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, ['title' => Yii::t('app', 'Update Testimony Category')]);
 		},
 		'delete' => function ($url, $model, $key) {
 			$url = Url::to(['category/delete', 'id'=>$model->primaryKey]);
 			return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, [
-				'title' => Yii::t('app', 'Delete Testimonial Category'),
+				'title' => Yii::t('app', 'Delete Testimony Category'),
 				'data-confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
 				'data-method'  => 'post',
 			]);

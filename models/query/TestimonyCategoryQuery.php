@@ -1,21 +1,21 @@
 <?php
 /**
- * TestimonialsQuery
+ * TestimonyCategoryQuery
  *
- * This is the ActiveQuery class for [[\app\modules\testimonial\models\Testimonials]].
- * @see \app\modules\testimonial\models\Testimonials
+ * This is the ActiveQuery class for [[\ommu\testimony\models\TestimonyCategory]].
+ * @see \ommu\testimony\models\TestimonyCategory
  * 
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
  * @copyright Copyright (c) 2018 ECC UGM (ecc.ft.ugm.ac.id)
- * @created date 15 May 2018, 01:39 WIB
+ * @created date 15 May 2018, 01:02 WIB
  * @link https://ecc.ft.ugm.ac.id
  *
  */
 
-namespace app\modules\testimonial\models\query;
+namespace ommu\testimony\models\query;
 
-class TestimonialsQuery extends \yii\db\ActiveQuery
+class TestimonyCategoryQuery extends \yii\db\ActiveQuery
 {
 	/*
 	public function active()
@@ -42,7 +42,7 @@ class TestimonialsQuery extends \yii\db\ActiveQuery
 
 	/**
 	 * @inheritdoc
-	 * @return \app\modules\testimonial\models\Testimonials[]|array
+	 * @return \ommu\testimony\models\TestimonyCategory[]|array
 	 */
 	public function all($db = null)
 	{
@@ -51,7 +51,7 @@ class TestimonialsQuery extends \yii\db\ActiveQuery
 
 	/**
 	 * @inheritdoc
-	 * @return \app\modules\testimonial\models\Testimonials|array|null
+	 * @return \ommu\testimony\models\TestimonyCategory|array|null
 	 */
 	public function one($db = null)
 	{
