@@ -11,7 +11,7 @@
  *	Update
  *	View
  *	Delete
- *	RunAction
+ *	Runaction
  *	Publish
  *
  *	findModel
