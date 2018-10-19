@@ -7,7 +7,7 @@
  * 
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
- * @copyright Copyright (c) 2018 ECC UGM (ecc.ft.ugm.ac.id)
+ * @copyright Copyright (c) 2018 Ommu Platform (www.ommu.co)
  * @created date 15 May 2018, 01:02 WIB
  * @link https://ecc.ft.ugm.ac.id
  *
