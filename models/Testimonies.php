@@ -41,7 +41,7 @@ use ommu\member\models\Members;
 
 class Testimonies extends \app\components\ActiveRecord
 {
-	use \ommu\traits\GridViewTrait;
+	use \ommu\traits\UtilityTrait;
 
 	public $gridForbiddenColumn = ['modified_date','modified_search','updated_date'];
 

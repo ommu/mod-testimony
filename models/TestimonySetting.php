@@ -34,7 +34,7 @@ use ommu\users\models\Users;
 
 class TestimonySetting extends \app\components\ActiveRecord
 {
-	use \ommu\traits\GridViewTrait;
+	use \ommu\traits\UtilityTrait;
 
 	public $gridForbiddenColumn = [];
 

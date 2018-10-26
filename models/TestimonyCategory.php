@@ -43,7 +43,6 @@ use ommu\users\models\Users;
 class TestimonyCategory extends \app\components\ActiveRecord
 {
 	use \ommu\traits\UtilityTrait;
-	use \ommu\traits\GridViewTrait;
 
 	public $gridForbiddenColumn = ['profile_alow','modified_date','modified_search','updated_date','category_desc_i'];
 	public $category_name_i;
