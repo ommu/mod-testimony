@@ -22,7 +22,7 @@ use ommu\testimony\models\TestimonyCategory as TestimonyCategoryModel;
 class TestimonyCategory extends TestimonyCategoryModel
 {
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function rules()
 	{
@@ -33,7 +33,7 @@ class TestimonyCategory extends TestimonyCategoryModel
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function scenarios()
 	{

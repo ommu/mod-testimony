@@ -22,7 +22,7 @@ use ommu\testimony\models\Testimonies as TestimoniesModel;
 class Testimonies extends TestimoniesModel
 {
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function rules()
 	{
@@ -34,7 +34,7 @@ class Testimonies extends TestimoniesModel
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function scenarios()
 	{

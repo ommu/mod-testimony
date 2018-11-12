@@ -141,7 +141,7 @@ class Testimonies extends \app\components\ActiveRecord
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 * @return \ommu\testimony\models\query\TestimoniesQuery the active query used by this AR class.
 	 */
 	public static function find()

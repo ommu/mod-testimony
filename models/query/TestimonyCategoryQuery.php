@@ -25,7 +25,7 @@ class TestimonyCategoryQuery extends \yii\db\ActiveQuery
 	*/
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function published() 
 	{
@@ -33,7 +33,7 @@ class TestimonyCategoryQuery extends \yii\db\ActiveQuery
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function unpublish() 
 	{
@@ -41,7 +41,7 @@ class TestimonyCategoryQuery extends \yii\db\ActiveQuery
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 * @return \ommu\testimony\models\TestimonyCategory[]|array
 	 */
 	public function all($db = null)
@@ -50,7 +50,7 @@ class TestimonyCategoryQuery extends \yii\db\ActiveQuery
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 * @return \ommu\testimony\models\TestimonyCategory|array|null
 	 */
 	public function one($db = null)

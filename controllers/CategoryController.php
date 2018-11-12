@@ -39,7 +39,7 @@ use ommu\testimony\models\search\TestimonyCategory as TestimonyCategorySearch;
 class CategoryController extends Controller
 {
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function behaviors()
 	{

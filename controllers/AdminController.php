@@ -37,7 +37,7 @@ use ommu\testimony\models\search\Testimonies as TestimoniesSearch;
 class AdminController extends Controller
 {
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 */
 	public function behaviors()
 	{

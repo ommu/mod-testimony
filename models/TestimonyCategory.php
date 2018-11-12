@@ -149,7 +149,7 @@ class TestimonyCategory extends \app\components\ActiveRecord
 	}
 
 	/**
-	 * @inheritdoc
+	 * {@inheritdoc}
 	 * @return \ommu\testimony\models\query\TestimonyCategoryQuery the active query used by this AR class.
 	 */
 	public static function find()
