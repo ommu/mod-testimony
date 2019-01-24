@@ -42,6 +42,14 @@ class TestimoniesQuery extends \yii\db\ActiveQuery
 
 	/**
 	 * {@inheritdoc}
+	 */
+	public function deleted() 
+	{
+		return $this->andWhere(['publish' => 2]);
+	}
+
+	/**
+	 * {@inheritdoc}
 	 * @return \ommu\testimony\models\Testimonies[]|array
 	 */
 	public function all($db = null)
