@@ -41,24 +41,24 @@ $permission = [
 ];
 echo $form->field($model, 'permission', ['template' => '{label}{beginWrapper}{hint}{input}{error}{endWrapper}'])
 	->radioList($permission, ['class'=>'desc pt-10', 'separator' => '<br />'])
-	->label($model->getAttributeLabel('permission'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12'])
+	->label($model->getAttributeLabel('permission'), ['class'=>'control-label col-md-3 col-sm-3 col-12'])
 	->hint(Yii::t('app', 'Select whether or not you want to let the public (visitors that are not logged-in) to view the following sections of your social network. In some cases (such as Profiles, Blogs, and Albums), if you have given them the option, your users will be able to make their pages private even though you have made them publically viewable here. For more permissions settings, please visit the General Settings page.')); ?>
 
-<?php echo $form->field($model, 'meta_keyword', ['template' => '{label}<div class="col-md-9 col-sm-9 col-xs-12">{input}{error}</div>'])
+<?php echo $form->field($model, 'meta_keyword', ['template' => '{label}<div class="col-md-9 col-sm-9 col-12">{input}{error}</div>'])
 	->textarea(['rows'=>6, 'cols'=>50])
-	->label($model->getAttributeLabel('meta_keyword'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']); ?>
+	->label($model->getAttributeLabel('meta_keyword'), ['class'=>'control-label col-md-3 col-sm-3 col-12']); ?>
 
-<?php echo $form->field($model, 'meta_description', ['template' => '{label}<div class="col-md-9 col-sm-9 col-xs-12">{input}{error}</div>'])
+<?php echo $form->field($model, 'meta_description', ['template' => '{label}<div class="col-md-9 col-sm-9 col-12">{input}{error}</div>'])
 	->textarea(['rows'=>6, 'cols'=>50])
-	->label($model->getAttributeLabel('meta_description'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']); ?>
+	->label($model->getAttributeLabel('meta_description'), ['class'=>'control-label col-md-3 col-sm-3 col-12']); ?>
 
-<?php echo $form->field($model, 'rate_scale', ['template' => '{label}<div class="col-md-9 col-sm-9 col-xs-12">{input}{error}</div>'])
+<?php echo $form->field($model, 'rate_scale', ['template' => '{label}<div class="col-md-9 col-sm-9 col-12">{input}{error}</div>'])
 	->textInput(['type' => 'number', 'min' => '1', 'maxlength' => true])
-	->label($model->getAttributeLabel('rate_scale'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12']); ?>
+	->label($model->getAttributeLabel('rate_scale'), ['class'=>'control-label col-md-3 col-sm-3 col-12']); ?>
 
 <div class="ln_solid"></div>
 <div class="form-group">
-	<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+	<div class="col-md-9 col-sm-9 col-12 col-md-offset-3">
 		<?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
 	</div>
 </div>
