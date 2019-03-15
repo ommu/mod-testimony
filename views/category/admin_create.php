@@ -17,12 +17,9 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Testimony Categories'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Settings'), 'url' => Url::to(['setting/index'])];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Category'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Create');
-
-$this->params['menu']['content'] = [
-	['label' => Yii::t('app', 'Back To Manage'), 'url' => Url::to(['setting/index']), 'icon' => 'table'],
-];
 ?>
 
 <?php echo $this->render('_form', [
