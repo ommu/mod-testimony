@@ -191,6 +191,7 @@ class TestimonyCategory extends \app\components\ActiveRecord
 				'attribute' => 'creation_search',
 				'value' => function($model, $key, $index, $column) {
 					return isset($model->creation) ? $model->creation->displayname : '-';
+					// return $model->creationDisplayname;
 				},
 			];
 		}
@@ -206,6 +207,7 @@ class TestimonyCategory extends \app\components\ActiveRecord
 				'attribute' => 'modified_search',
 				'value' => function($model, $key, $index, $column) {
 					return isset($model->modified) ? $model->modified->displayname : '-';
+					// return $model->modifiedDisplayname;
 				},
 			];
 		}
@@ -218,11 +220,11 @@ class TestimonyCategory extends \app\components\ActiveRecord
 		];
 		$this->templateColumns['rate_status'] = [
 			'attribute' => 'rate_status',
-			'filter' => $this->filterYesNo(),
 			'value' => function($model, $key, $index, $column) {
 				$url = Url::to(['category/rate', 'id'=>$model->primaryKey]);
 				return $this->quickAction($url, $model->rate_status, 'Enable,Disable');
 			},
+			'filter' => $this->filterYesNo(),
 			'contentOptions' => ['class'=>'center'],
 			'format' => 'raw',
 		];
