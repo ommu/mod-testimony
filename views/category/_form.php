@@ -28,19 +28,19 @@ use app\components\ActiveForm;
 
 <?php echo $form->field($model, 'category_name_i', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12 col-12">{input}{error}</div>'])
 	->textInput(['maxlength' => true])
-	->label($model->getAttributeLabel('category_name_i'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12 col-12']); ?>
+	->label($model->getAttributeLabel('category_name_i'), ['class'=>'control-label col-sm-3 col-xs-12 col-12']); ?>
 
 <?php echo $form->field($model, 'category_desc_i', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12 col-12">{input}{error}</div>'])
 	->textarea(['rows'=>6, 'cols'=>50, 'maxlength' => true])
-	->label($model->getAttributeLabel('category_desc_i'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12 col-12']); ?>
+	->label($model->getAttributeLabel('category_desc_i'), ['class'=>'control-label col-sm-3 col-xs-12 col-12']); ?>
 
 <?php echo $form->field($model, 'rate_status', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12 col-12 checkbox">{input}{error}</div>'])
 	->checkbox(['label'=>''])
-	->label($model->getAttributeLabel('rate_status'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12 col-12']); ?>
+	->label($model->getAttributeLabel('rate_status'), ['class'=>'control-label col-sm-3 col-xs-12 col-12']); ?>
 
 <?php echo $form->field($model, 'publish', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12 col-12 checkbox">{input}{error}</div>'])
 	->checkbox(['label'=>''])
-	->label($model->getAttributeLabel('publish'), ['class'=>'control-label col-md-3 col-sm-3 col-xs-12 col-12']); ?>
+	->label($model->getAttributeLabel('publish'), ['class'=>'control-label col-sm-3 col-xs-12 col-12']); ?>
 
 <div class="ln_solid"></div>
 <div class="form-group">
