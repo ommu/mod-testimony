@@ -4,7 +4,7 @@
  * @var $this yii\web\View
  * @var $this ommu\testimony\controllers\SettingController
  * @var $model ommu\testimony\models\TestimonySetting
- * @var $form yii\widgets\ActiveForm
+ * @var $form app\components\widgets\ActiveForm
  * 
  * @author Putra Sudaryanto <putra@sudaryanto.id>
  * @contact (+62)856-299-4114
@@ -87,7 +87,7 @@ echo GridView::widget([
 
 
 <div class="col-md-12 col-sm-12 col-xs-12 col-12">
-	<?php echo \app\components\widgets\Alert::widget(); ?>
+	<?php echo \app\components\widgets\Alert::widget(['closeButton'=>false]); ?>
 
 	<div class="x_panel">
 		<div class="x_content">
