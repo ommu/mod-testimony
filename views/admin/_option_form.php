@@ -1,7 +1,7 @@
 <?php
 /**
  * Testimonies (testimonies)
- * @var $this yii\web\View
+ * @var $this app\components\View
  * @var $this ommu\testimony\controllers\AdminController
  * @var $model ommu\testimony\models\search\Testimonies
  * @var $form yii\widgets\ActiveForm

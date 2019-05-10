@@ -1,7 +1,7 @@
 <?php
 /**
  * Testimony Categories (testimony-category)
- * @var $this yii\web\View
+ * @var $this app\components\View
  * @var $this ommu\testimony\controllers\CategoryController
  * @var $model ommu\testimony\models\TestimonyCategory
  * @var $form app\components\widgets\ActiveForm

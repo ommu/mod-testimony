@@ -1,7 +1,7 @@
 <?php
 /**
  * Testimony Settings (testimony-setting)
- * @var $this yii\web\View
+ * @var $this app\components\View
  * @var $this ommu\testimony\controllers\SettingController
  * @var $model ommu\testimony\models\TestimonySetting
  * @var $form app\components\widgets\ActiveForm
