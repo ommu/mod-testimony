@@ -1,7 +1,7 @@
 <?php
 /**
  * CategoryController
- * @var $this yii\web\View
+ * @var $this ommu\testimony\controllers\CategoryController
  * @var $model ommu\testimony\models\TestimonyCategory
  *
  * CategoryController implements the CRUD actions for TestimonyCategory model.

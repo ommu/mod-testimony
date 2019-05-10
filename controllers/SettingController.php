@@ -1,7 +1,7 @@
 <?php
 /**
  * SettingController
- * @var $this yii\web\View
+ * @var $this ommu\testimony\controllers\SettingController
  * @var $model ommu\testimony\models\TestimonySetting
  *
  * SettingController implements the CRUD actions for TestimonySetting model.

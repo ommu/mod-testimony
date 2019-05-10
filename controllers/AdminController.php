@@ -1,7 +1,7 @@
 <?php
 /**
  * AdminController
- * @var $this yii\web\View
+ * @var $this ommu\testimony\controllers\AdminController
  * @var $model ommu\testimony\models\Testimonies
  *
  * AdminController implements the CRUD actions for Testimonies model.
