@@ -93,6 +93,7 @@ class AdminController extends Controller
 	public function actionUpdate($id)
 	{
 		$model = $this->findModel($id);
+
 		if(Yii::$app->request->isPost) {
 			$model->load(Yii::$app->request->post());
 
