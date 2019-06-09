@@ -20,7 +20,7 @@
  * @link https://ecc.ft.ugm.ac.id
  *
  */
- 
+
 namespace ommu\testimony\controllers;
 
 use Yii;
@@ -89,6 +89,8 @@ class SettingController extends Controller
 
 		if(Yii::$app->request->isPost) {
 			$model->load(Yii::$app->request->post());
+			// $postData = Yii::$app->request->post();
+			// $model->load($postData);
 
 			if($model->save()) {
 				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony setting success updated.'));
@@ -116,8 +118,9 @@ class SettingController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->findModel($id)->delete();
-		
+		$model = $this->findModel($id);
+		$model->delete();
+
 		Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony setting success deleted.'));
 		return $this->redirect(['index']);
 	}

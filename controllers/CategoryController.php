@@ -25,7 +25,7 @@
  * @link https://github.com/ommu/mod-testimony
  *
  */
- 
+
 namespace ommu\testimony\controllers;
 
 use Yii;
@@ -98,6 +98,9 @@ class CategoryController extends Controller
 
 		if(Yii::$app->request->isPost) {
 			$model->load(Yii::$app->request->post());
+			// $postData = Yii::$app->request->post();
+			// $model->load($postData);
+
 			if($model->save()) {
 				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony category success created.'));
 				return $this->redirect(['index']);
@@ -125,6 +128,8 @@ class CategoryController extends Controller
 
 		if(Yii::$app->request->isPost) {
 			$model->load(Yii::$app->request->post());
+			// $postData = Yii::$app->request->post();
+			// $model->load($postData);
 
 			if($model->save()) {
 				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony category success updated.'));
