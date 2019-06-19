@@ -142,7 +142,7 @@ class AdminController extends Controller
 		$model = $this->findModel($id);
 		$model->publish = 2;
 
-		if($model->save(false, ['publish'])) {
+		if($model->save(false, ['publish','modified_id'])) {
 			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony success deleted.'));
 			return $this->redirect(['index']);
 			//return $this->redirect(['view', 'id' => $model->testimonial_id]);
@@ -161,7 +161,7 @@ class AdminController extends Controller
 		$replace = $model->publish == 1 ? 0 : 1;
 		$model->publish = $replace;
 
-		if($model->save(false, ['publish'])) {
+		if($model->save(false, ['publish','modified_id'])) {
 			Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony success updated.'));
 			return $this->redirect(['index']);
 		}
