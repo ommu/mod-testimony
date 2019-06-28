@@ -103,6 +103,10 @@ class AdminController extends Controller
 				Yii::$app->session->setFlash('success', Yii::t('app', 'Testimony success updated.'));
 				return $this->redirect(['index']);
 				//return $this->redirect(['view', 'id' => $model->testimonial_id]);
+
+			} else {
+				if(Yii::$app->request->isAjax)
+					return \yii\helpers\Json::encode(\app\components\widgets\ActiveForm::validate($model));
 			}
 		}
 
