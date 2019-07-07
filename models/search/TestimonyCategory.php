@@ -65,7 +65,8 @@ class TestimonyCategory extends TestimonyCategoryModel
 			'description description', 
 			'creation creation', 
 			'modified modified'
-		]);
+		])
+		->groupBy(['cat_id']);
 
 		// add conditions that should always apply here
 		$dataProvider = new ActiveDataProvider([

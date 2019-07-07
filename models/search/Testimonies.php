@@ -66,7 +66,8 @@ class Testimonies extends TestimoniesModel
 			'member member', 
 			'user user', 
 			'modified modified'
-		]);
+		])
+		->groupBy(['testimonial_id']);
 
 		// add conditions that should always apply here
 		$dataProvider = new ActiveDataProvider([
