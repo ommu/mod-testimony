@@ -29,7 +29,7 @@ class Testimonies extends TestimoniesModel
 		return [
 			[['testimonial_id', 'publish', 'cat_id', 'user_id', 'member_id', 'testimony_rate', 'modified_id'], 'integer'],
 			[['testimony_message', 'creation_date', 'modified_date', 'updated_date',
-				'category_search', 'member_search', 'user_search', 'modified_search'], 'safe'],
+				'category_search', 'member_search', 'userDisplayname', 'modifiedDisplayname'], 'safe'],
 		];
 	}
 
@@ -83,11 +83,11 @@ class Testimonies extends TestimoniesModel
 			'asc' => ['member.member_id' => SORT_ASC],
 			'desc' => ['member.member_id' => SORT_DESC],
 		];
-		$attributes['user_search'] = [
+		$attributes['userDisplayname'] = [
 			'asc' => ['user.displayname' => SORT_ASC],
 			'desc' => ['user.displayname' => SORT_DESC],
 		];
-		$attributes['modified_search'] = [
+		$attributes['modifiedDisplayname'] = [
 			'asc' => ['modified.displayname' => SORT_ASC],
 			'desc' => ['modified.displayname' => SORT_DESC],
 		];
@@ -129,8 +129,8 @@ class Testimonies extends TestimoniesModel
 		$query->andFilterWhere(['like', 't.testimony_message', $this->testimony_message])
 			->andFilterWhere(['like', 'category.message', $this->category_search])
 			->andFilterWhere(['like', 'member.member_id', $this->member_search])
-			->andFilterWhere(['like', 'user.displayname', $this->user_search])
-			->andFilterWhere(['like', 'modified.displayname', $this->modified_search]);
+			->andFilterWhere(['like', 'user.displayname', $this->userDisplayname])
+			->andFilterWhere(['like', 'modified.displayname', $this->modifiedDisplayname]);
 
 		return $dataProvider;
 	}

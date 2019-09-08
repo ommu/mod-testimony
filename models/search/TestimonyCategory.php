@@ -28,7 +28,7 @@ class TestimonyCategory extends TestimonyCategoryModel
 	{
 		return [
 			[['cat_id', 'publish', 'rate_status', 'category_name', 'category_desc', 'creation_id', 'modified_id'], 'integer'],
-			[['profile_alow', 'creation_date', 'modified_date', 'updated_date', 'category_name_i', 'category_desc_i', 'creation_search', 'modified_search'], 'safe'],
+			[['profile_alow', 'creation_date', 'modified_date', 'updated_date', 'category_name_i', 'category_desc_i', 'creationDisplayname', 'modifiedDisplayname'], 'safe'],
 		];
 	}
 
@@ -82,11 +82,11 @@ class TestimonyCategory extends TestimonyCategoryModel
 			'asc' => ['description.message' => SORT_ASC],
 			'desc' => ['description.message' => SORT_DESC],
 		];
-		$attributes['creation_search'] = [
+		$attributes['creationDisplayname'] = [
 			'asc' => ['creation.displayname' => SORT_ASC],
 			'desc' => ['creation.displayname' => SORT_DESC],
 		];
-		$attributes['modified_search'] = [
+		$attributes['modifiedDisplayname'] = [
 			'asc' => ['modified.displayname' => SORT_ASC],
 			'desc' => ['modified.displayname' => SORT_DESC],
 		];
@@ -128,8 +128,8 @@ class TestimonyCategory extends TestimonyCategoryModel
 		$query->andFilterWhere(['like', 't.profile_alow', $this->profile_alow])
 			->andFilterWhere(['like', 'title.message', $this->category_name_i])
 			->andFilterWhere(['like', 'description.message', $this->category_desc_i])
-			->andFilterWhere(['like', 'creation.displayname', $this->creation_search])
-			->andFilterWhere(['like', 'modified.displayname', $this->modified_search]);
+			->andFilterWhere(['like', 'creation.displayname', $this->creationDisplayname])
+			->andFilterWhere(['like', 'modified.displayname', $this->modifiedDisplayname]);
 
 		return $dataProvider;
 	}
