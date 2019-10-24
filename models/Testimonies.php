@@ -159,31 +159,28 @@ class Testimonies extends \app\components\ActiveRecord
 			'class' => 'yii\grid\SerialColumn',
 			'contentOptions' => ['class'=>'center'],
 		];
-		if(!Yii::$app->request->get('category')) {
-			$this->templateColumns['cat_id'] = [
-				'attribute' => 'cat_id',
-				'filter' => TestimonyCategory::getCategory(),
-				'value' => function($model, $key, $index, $column) {
-					return isset($model->category) ? $model->category->category_name : '-';
-				},
-			];
-		}
-		if(!Yii::$app->request->get('user')) {
-			$this->templateColumns['userDisplayname'] = [
-				'attribute' => 'userDisplayname',
-				'value' => function($model, $key, $index, $column) {
-					return isset($model->user) ? $model->user->displayname : '-';
-				},
-			];
-		}
-		if(!Yii::$app->request->get('member')) {
-			$this->templateColumns['member_search'] = [
-				'attribute' => 'member_search',
-				'value' => function($model, $key, $index, $column) {
-					return isset($model->member) ? $model->member->member_id : '-';
-				},
-			];
-		}
+		$this->templateColumns['cat_id'] = [
+			'attribute' => 'cat_id',
+			'filter' => TestimonyCategory::getCategory(),
+			'value' => function($model, $key, $index, $column) {
+				return isset($model->category) ? $model->category->category_name : '-';
+			},
+			'visible' => !Yii::$app->request->get('category') ? true : false,
+		];
+		$this->templateColumns['userDisplayname'] = [
+			'attribute' => 'userDisplayname',
+			'value' => function($model, $key, $index, $column) {
+				return isset($model->user) ? $model->user->displayname : '-';
+			},
+			'visible' => !Yii::$app->request->get('user') ? true : false,
+		];
+		$this->templateColumns['member_search'] = [
+			'attribute' => 'member_search',
+			'value' => function($model, $key, $index, $column) {
+				return isset($model->member) ? $model->member->member_id : '-';
+			},
+			'visible' => !Yii::$app->request->get('member') ? true : false,
+		];
 		$this->templateColumns['testimony_rate'] = [
 			'attribute' => 'testimony_rate',
 			'value' => function($model, $key, $index, $column) {
@@ -210,15 +207,14 @@ class Testimonies extends \app\components\ActiveRecord
 			},
 			'filter' => $this->filterDatepicker($this, 'modified_date'),
 		];
-		if(!Yii::$app->request->get('modified')) {
-			$this->templateColumns['modifiedDisplayname'] = [
-				'attribute' => 'modifiedDisplayname',
-				'value' => function($model, $key, $index, $column) {
-					return isset($model->modified) ? $model->modified->displayname : '-';
-					// return $model->modifiedDisplayname;
-				},
-			];
-		}
+		$this->templateColumns['modifiedDisplayname'] = [
+			'attribute' => 'modifiedDisplayname',
+			'value' => function($model, $key, $index, $column) {
+				return isset($model->modified) ? $model->modified->displayname : '-';
+				// return $model->modifiedDisplayname;
+			},
+			'visible' => !Yii::$app->request->get('modified') ? true : false,
+		];
 		$this->templateColumns['updated_date'] = [
 			'attribute' => 'updated_date',
 			'value' => function($model, $key, $index, $column) {
@@ -226,18 +222,17 @@ class Testimonies extends \app\components\ActiveRecord
 			},
 			'filter' => $this->filterDatepicker($this, 'updated_date'),
 		];
-		if(!Yii::$app->request->get('trash')) {
-			$this->templateColumns['publish'] = [
-				'attribute' => 'publish',
-				'value' => function($model, $key, $index, $column) {
-					$url = Url::to(['publish', 'id'=>$model->primaryKey]);
-					return $this->quickAction($url, $model->publish, 'Approved,Pending');
-				},
-				'filter' => $this->filterYesNo(),
-				'contentOptions' => ['class'=>'center'],
-				'format' => 'raw',
-			];
-		}
+		$this->templateColumns['publish'] = [
+			'attribute' => 'publish',
+			'value' => function($model, $key, $index, $column) {
+				$url = Url::to(['publish', 'id'=>$model->primaryKey]);
+				return $this->quickAction($url, $model->publish, 'Approved,Pending');
+			},
+			'filter' => $this->filterYesNo(),
+			'contentOptions' => ['class'=>'center'],
+			'format' => 'raw',
+			'visible' => !Yii::$app->request->get('trash') ? true : false,
+		];
 	}
 
 	/**
