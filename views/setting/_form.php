@@ -61,7 +61,7 @@ echo $form->field($model, 'permission', ['template' => '{label}{beginWrapper}{hi
 	->textInput(['type' => 'number', 'min' => '1', 'maxlength' => true])
 	->label($model->getAttributeLabel('rate_scale'), ['class'=>'control-label col-sm-3 col-xs-12']); ?>
 
-<div class="ln_solid"></div>
+<hr/>
 <div class="form-group">
 	<div class="col-md-6 col-sm-9 col-xs-12 col-sm-offset-3">
 		<?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
