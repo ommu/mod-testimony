@@ -67,8 +67,6 @@ class SettingController extends Controller
 	 */
 	public function actionUpdate()
 	{
-		$this->layout = 'admin_default';
-
 		$searchModel = new TestimonyCategorySearch();
 		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -103,6 +101,7 @@ class SettingController extends Controller
 			}
 		}
 
+		$this->view->cards = false;
 		$this->view->title = Yii::t('app', 'Testimony Settings');
 		$this->view->description = '';
 		$this->view->keywords = '';
