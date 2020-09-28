@@ -178,6 +178,27 @@ class TestimonySetting extends \app\components\ActiveRecord
 	}
 
 	/**
+	 * function getPermission
+	 */
+	public static function getPermission($value=null)
+	{
+		$moduleName = "module name";
+		$module = strtolower(Yii::$app->controller->module->id);
+		if(($module = Yii::$app->moduleManager->getModule($module)) != null);
+			$moduleName = strtolower($module->getName());
+
+		$items = array(
+			1 => Yii::t('app', 'Yes, the public can view {module} unless they are made private.', ['module'=>$moduleName]),
+			0 => Yii::t('app', 'No, the public cannot view {module}.', ['module'=>$moduleName]),
+		);
+
+		if($value !== null)
+			return $items[$value];
+		else
+			return $items;
+	}
+
+	/**
 	 * before validate attributes
 	 */
 	public function beforeValidate() 

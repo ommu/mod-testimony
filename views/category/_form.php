@@ -19,6 +19,7 @@ use app\components\widgets\ActiveForm;
 ?>
 
 <?php $form = ActiveForm::begin([
+	'options' => ['class'=>'form-horizontal form-label-left'],
 	'enableClientValidation' => true,
 	'enableAjaxValidation' => false,
 	//'enableClientScript' => true,
@@ -31,27 +32,27 @@ use app\components\widgets\ActiveForm;
 
 <?php //echo $form->errorSummary($model);?>
 
-<?php echo $form->field($model, 'category_name_i', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12">{input}{error}</div>'])
+<?php echo $form->field($model, 'category_name_i')
 	->textInput(['maxlength' => true])
-	->label($model->getAttributeLabel('category_name_i'), ['class'=>'control-label col-sm-3 col-xs-12']); ?>
+	->label($model->getAttributeLabel('category_name_i')); ?>
 
-<?php echo $form->field($model, 'category_desc_i', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12">{input}{error}</div>'])
+<?php echo $form->field($model, 'category_desc_i')
 	->textarea(['rows'=>6, 'cols'=>50, 'maxlength' => true])
-	->label($model->getAttributeLabel('category_desc_i'), ['class'=>'control-label col-sm-3 col-xs-12']); ?>
+	->label($model->getAttributeLabel('category_desc_i')); ?>
 
 <?php echo $form->field($model, 'rate_status', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12 checkbox">{input}{error}</div>'])
 	->checkbox(['label'=>''])
-	->label($model->getAttributeLabel('rate_status'), ['class'=>'control-label col-sm-3 col-xs-12']); ?>
+	->label($model->getAttributeLabel('rate_status')); ?>
 
-<?php echo $form->field($model, 'publish', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12 checkbox">{input}{error}</div>'])
-	->checkbox(['label'=>''])
-	->label($model->getAttributeLabel('publish'), ['class'=>'control-label col-sm-3 col-xs-12']); ?>
+<?php if($model->isNewRecord && !$model->getErrors())
+	$model->publish = 1;
+echo $form->field($model, 'publish')
+	->checkbox()
+	->label($model->getAttributeLabel('publish')); ?>
 
 <hr/>
-<div class="form-group">
-	<div class="col-md-6 col-sm-9 col-xs-12 col-sm-offset-3">
-		<?php echo Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']); ?>
-	</div>
-</div>
+
+<?php echo $form->field($model, 'submitButton')
+	->submitButton(); ?>
 
 <?php ActiveForm::end(); ?>
