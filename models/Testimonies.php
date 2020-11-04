@@ -43,7 +43,7 @@ class Testimonies extends \app\components\ActiveRecord
 {
 	use \ommu\traits\UtilityTrait;
 
-	public $gridForbiddenColumn = ['modified_date','modifiedDisplayname','updated_date'];
+	public $gridForbiddenColumn = ['modified_date', 'modifiedDisplayname', 'updated_date'];
 
 	// Variable Search
 	public $category_search;
@@ -148,11 +148,13 @@ class Testimonies extends \app\components\ActiveRecord
 	{
 		parent::init();
 
-		if(!(Yii::$app instanceof \app\components\Application))
-			return;
+        if (!(Yii::$app instanceof \app\components\Application)) {
+            return;
+        }
 
-		if(!$this->hasMethod('search'))
-			return;
+        if (!$this->hasMethod('search')) {
+            return;
+        }
 
 		$this->templateColumns['_no'] = [
 			'header' => '#',
@@ -240,43 +242,47 @@ class Testimonies extends \app\components\ActiveRecord
 	 */
 	public static function getInfo($id, $column=null)
 	{
-		if($column != null) {
-			$model = self::find();
-			if(is_array($column))
-				$model->select($column);
-			else
-				$model->select([$column]);
-			$model = $model->where(['testimonial_id' => $id])->one();
-			return is_array($column) ? $model : $model->$column;
-			
-		} else {
-			$model = self::findOne($id);
-			return $model;
-		}
+        if ($column != null) {
+            $model = self::find();
+            if (is_array($column)) {
+                $model->select($column);
+            } else {
+                $model->select([$column]);
+            }
+            $model = $model->where(['testimonial_id' => $id])->one();
+            return is_array($column) ? $model : $model->$column;
+
+        } else {
+            $model = self::findOne($id);
+            return $model;
+        }
 	}
 
 	/**
 	 * function getTestimonies
 	 */
-	public static function getTestimony($publish=null, $array=true) 
+	public static function getTestimony($publish=null, $array=true)
 	{
 		$model = self::find()->alias('t');
-		if($publish != null)
-			$model->andWhere(['t.publish' => $publish]);
+        if ($publish != null) {
+            $model->andWhere(['t.publish' => $publish]);
+        }
 
 		$model = $model->orderBy('t.testimonial_id ASC')->all();
 
-		if($array == true) {
+        if ($array == true) {
 			$items = [];
-			if($model !== null) {
-				foreach($model as $val) {
+            if ($model !== null) {
+				foreach ($model as $val) {
 					$items[$val->testimonial_id] = $val->testimonial_id;
 				}
 				return $items;
-			} else
-				return false;
-		} else 
-			return $model;
+			} else {
+                return false;
+            }
+		} else {
+            return $model;
+        }
 	}
 
 	/**
@@ -284,19 +290,22 @@ class Testimonies extends \app\components\ActiveRecord
 	 */
 	public function beforeValidate()
 	{
-		if(parent::beforeValidate()) {
-			if($this->isNewRecord) {
-				if($this->user_id == null)
-					$this->user_id = !Yii::$app->user->isGuest ? Yii::$app->user->id : null;
-			} else {
-				if($this->modified_id == null)
-					$this->modified_id = !Yii::$app->user->isGuest ? Yii::$app->user->id : null;
-			}
+        if (parent::beforeValidate()) {
+            if ($this->isNewRecord) {
+                if ($this->user_id == null) {
+                    $this->user_id = !Yii::$app->user->isGuest ? Yii::$app->user->id : null;
+                }
+            } else {
+                if ($this->modified_id == null) {
+                    $this->modified_id = !Yii::$app->user->isGuest ? Yii::$app->user->id : null;
+                }
+            }
 
-			if(isset($this->category) && $this->category->rate_status == 1)
-				$this->addError('testimony_rate', Yii::t('app', '{attribute} cannot be blank.', ['attribute'=>$this->getAttributeLabel('testimony_rate')]));
-		}
-		return true;
+            if (isset($this->category) && $this->category->rate_status == 1) {
+                $this->addError('testimony_rate', Yii::t('app', '{attribute} cannot be blank.', ['attribute'=>$this->getAttributeLabel('testimony_rate')]));
+            }
+        }
+        return true;
 	}
 
 	/**
@@ -304,9 +313,9 @@ class Testimonies extends \app\components\ActiveRecord
 	 */
 	public function afterSave($insert, $changedAttributes)
 	{
-		parent::afterSave($insert, $changedAttributes);
+        parent::afterSave($insert, $changedAttributes);
 
-		if($insert) {
+        if ($insert) {
 			/*
 			Yii::$app->mailer->compose()
 				->setFrom('emailasale@gmail.com')

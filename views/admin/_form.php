@@ -51,18 +51,21 @@ echo $form->field($model, 'cat_id')
 	->dropDownList($cat_id, ['prompt'=>''])
 	->label($model->getAttributeLabel('cat_id')); ?>
 
-<?php if($model->cat_id == null || (isset($model->category) && $model->category->rate_status == 1)):
-echo $form->field($model, 'testimony_rate')
-	->textInput(['type' => 'number', 'min' => '1', 'maxlength' => true])
-	->label($model->getAttributeLabel('testimony_rate'));
-endif; ?>
+<?php 
+if ($model->cat_id == null || (isset($model->category) && $model->category->rate_status == 1)) {
+    echo $form->field($model, 'testimony_rate')
+        ->textInput(['type' => 'number', 'min' => '1', 'maxlength' => true])
+        ->label($model->getAttributeLabel('testimony_rate'));
+} ?>
 
 <?php echo $form->field($model, 'testimony_message')
 	->textarea(['rows'=>6, 'cols'=>50])
 	->label($model->getAttributeLabel('testimony_message')); ?>
 
-<?php if($model->isNewRecord && !$model->getErrors())
-	$model->publish = 1;
+<?php 
+if ($model->isNewRecord && !$model->getErrors()) {
+    $model->publish = 1;
+}
 echo $form->field($model, 'publish')
 	->checkbox()
 	->label($model->getAttributeLabel('publish')); ?>
