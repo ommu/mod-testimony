@@ -20,7 +20,7 @@ use ommu\testimony\models\TestimonyCategory;
 ?>
 
 <?php $form = ActiveForm::begin([
-	'options' => ['class'=>'form-horizontal form-label-left'],
+	'options' => ['class' => 'form-horizontal form-label-left'],
 	'enableClientValidation' => true,
 	'enableAjaxValidation' => false,
 	//'enableClientScript' => true,
@@ -48,7 +48,7 @@ echo $form->field($model, 'member_id', ['template' => '{label}<div class="col-md
 <?php 
 $cat_id = TestimonyCategory::getCategory(1);
 echo $form->field($model, 'cat_id')
-	->dropDownList($cat_id, ['prompt'=>''])
+	->dropDownList($cat_id, ['prompt' => ''])
 	->label($model->getAttributeLabel('cat_id')); ?>
 
 <?php 
@@ -59,7 +59,7 @@ if ($model->cat_id == null || (isset($model->category) && $model->category->rate
 } ?>
 
 <?php echo $form->field($model, 'testimony_message')
-	->textarea(['rows'=>6, 'cols'=>50])
+	->textarea(['rows' => 6, 'cols' => 50])
 	->label($model->getAttributeLabel('testimony_message')); ?>
 
 <?php 

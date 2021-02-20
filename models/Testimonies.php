@@ -159,7 +159,7 @@ class Testimonies extends \app\components\ActiveRecord
 		$this->templateColumns['_no'] = [
 			'header' => '#',
 			'class' => 'app\components\grid\SerialColumn',
-			'contentOptions' => ['class'=>'text-center'],
+			'contentOptions' => ['class' => 'text-center'],
 		];
 		$this->templateColumns['cat_id'] = [
 			'attribute' => 'cat_id',
@@ -227,11 +227,11 @@ class Testimonies extends \app\components\ActiveRecord
 		$this->templateColumns['publish'] = [
 			'attribute' => 'publish',
 			'value' => function($model, $key, $index, $column) {
-				$url = Url::to(['publish', 'id'=>$model->primaryKey]);
+				$url = Url::to(['publish', 'id' => $model->primaryKey]);
 				return $this->quickAction($url, $model->publish, 'Approved,Pending');
 			},
 			'filter' => $this->filterYesNo(),
-			'contentOptions' => ['class'=>'text-center'],
+			'contentOptions' => ['class' => 'text-center'],
 			'format' => 'raw',
 			'visible' => !Yii::$app->request->get('trash') ? true : false,
 		];
@@ -302,7 +302,7 @@ class Testimonies extends \app\components\ActiveRecord
             }
 
             if (isset($this->category) && $this->category->rate_status == 1) {
-                $this->addError('testimony_rate', Yii::t('app', '{attribute} cannot be blank.', ['attribute'=>$this->getAttributeLabel('testimony_rate')]));
+                $this->addError('testimony_rate', Yii::t('app', '{attribute} cannot be blank.', ['attribute' => $this->getAttributeLabel('testimony_rate')]));
             }
         }
         return true;

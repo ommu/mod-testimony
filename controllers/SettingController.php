@@ -83,7 +83,7 @@ class SettingController extends Controller
 
 		$model = TestimonySetting::findOne(1);
         if ($model === null) {
-			$model = new TestimonySetting(['id'=>1]);
+			$model = new TestimonySetting(['id' => 1]);
         }
 
         if (Yii::$app->request->isPost) {

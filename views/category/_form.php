@@ -19,7 +19,7 @@ use app\components\widgets\ActiveForm;
 ?>
 
 <?php $form = ActiveForm::begin([
-	'options' => ['class'=>'form-horizontal form-label-left'],
+	'options' => ['class' => 'form-horizontal form-label-left'],
 	'enableClientValidation' => true,
 	'enableAjaxValidation' => false,
 	//'enableClientScript' => true,
@@ -37,11 +37,11 @@ use app\components\widgets\ActiveForm;
 	->label($model->getAttributeLabel('category_name_i')); ?>
 
 <?php echo $form->field($model, 'category_desc_i')
-	->textarea(['rows'=>6, 'cols'=>50, 'maxlength' => true])
+	->textarea(['rows' => 6, 'cols' => 50, 'maxlength' => true])
 	->label($model->getAttributeLabel('category_desc_i')); ?>
 
 <?php echo $form->field($model, 'rate_status', ['template' => '{label}<div class="col-md-6 col-sm-9 col-xs-12 checkbox">{input}{error}</div>'])
-	->checkbox(['label'=>''])
+	->checkbox(['label' => ''])
 	->label($model->getAttributeLabel('rate_status')); ?>
 
 <?php 

@@ -66,10 +66,11 @@ class Testimonies extends TestimoniesModel
 			'member member', 
 			'user user', 
 			'modified modified'
-		])
-		->groupBy(['testimonial_id']);
+		]);
 
-		// add conditions that should always apply here
+		$query->groupBy(['testimonial_id']);
+
+        // add conditions that should always apply here
 		$dataProvider = new ActiveDataProvider([
 			'query' => $query,
 		]);
@@ -99,10 +100,10 @@ class Testimonies extends TestimoniesModel
 		$this->load($params);
 
         if (!$this->validate()) {
-			// uncomment the following line if you do not want to return any records when validation fails
-			// $query->where('0=1');
-			return $dataProvider;
-		}
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
 
 		// grid filtering conditions
 		$query->andFilterWhere([
@@ -125,7 +126,7 @@ class Testimonies extends TestimoniesModel
             } else {
                 $query->andFilterWhere(['t.publish' => $this->publish]);
             }
-		}
+        }
 
 		$query->andFilterWhere(['like', 't.testimony_message', $this->testimony_message])
 			->andFilterWhere(['like', 'category.message', $this->category_search])
