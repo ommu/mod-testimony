@@ -27,56 +27,59 @@ if (!$small) {
     ];
 } ?>
 
-<?php echo DetailView::widget([
+<?php
+$attributes = [
+    'testimonial_id',
+    [
+        'attribute' => 'publish',
+        'value' => $this->quickAction(Url::to(['publish', 'id' => $model->primaryKey]), $model->publish, 'Approved,Pending'),
+        'format' => 'raw',
+    ],
+    [
+        'attribute' => 'category_search',
+        'value' => isset($model->category) ? $model->category->title->message : '-',
+    ],
+    [
+        'attribute' => 'userDisplayname',
+        'value' => isset($model->user) ? $model->user->displayname : '-',
+    ],
+    [
+        'attribute' => 'member_search',
+        'value' => isset($model->member) ? $model->member->member_id : '-',
+    ],
+    [
+        'attribute' => 'testimony_rate',
+        'value' => $model->testimony_rate ? $model->testimony_rate : '-',
+    ],
+    [
+        'attribute' => 'testimony_message',
+        'value' => $model->testimony_message ? $model->testimony_message : '-',
+    ],
+    [
+        'attribute' => 'creation_date',
+        'value' => Yii::$app->formatter->asDatetime($model->creation_date, 'medium'),
+        'visible' => !$small,
+    ],
+    [
+        'attribute' => 'modified_date',
+        'value' => Yii::$app->formatter->asDatetime($model->modified_date, 'medium'),
+        'visible' => !$small,
+    ],
+    [
+        'attribute' => 'modifiedDisplayname',
+        'value' => isset($model->modified) ? $model->modified->displayname : '-',
+    ],
+    [
+        'attribute' => 'updated_date',
+        'value' => Yii::$app->formatter->asDatetime($model->updated_date, 'medium'),
+        'visible' => !$small,
+    ],
+];
+
+echo DetailView::widget([
 	'model' => $model,
 	'options' => [
 		'class' => 'table table-striped detail-view',
 	],
-	'attributes' => [
-		'testimonial_id',
-		[
-			'attribute' => 'publish',
-			'value' => $this->quickAction(Url::to(['publish', 'id' => $model->primaryKey]), $model->publish, 'Approved,Pending'),
-			'format' => 'raw',
-		],
-		[
-			'attribute' => 'category_search',
-			'value' => isset($model->category) ? $model->category->title->message : '-',
-		],
-		[
-			'attribute' => 'userDisplayname',
-			'value' => isset($model->user) ? $model->user->displayname : '-',
-		],
-		[
-			'attribute' => 'member_search',
-			'value' => isset($model->member) ? $model->member->member_id : '-',
-		],
-		[
-			'attribute' => 'testimony_rate',
-			'value' => $model->testimony_rate ? $model->testimony_rate : '-',
-		],
-		[
-			'attribute' => 'testimony_message',
-			'value' => $model->testimony_message ? $model->testimony_message : '-',
-		],
-		[
-			'attribute' => 'creation_date',
-			'value' => Yii::$app->formatter->asDatetime($model->creation_date, 'medium'),
-			'visible' => !$small,
-		],
-		[
-			'attribute' => 'modified_date',
-			'value' => Yii::$app->formatter->asDatetime($model->modified_date, 'medium'),
-			'visible' => !$small,
-		],
-		[
-			'attribute' => 'modifiedDisplayname',
-			'value' => isset($model->modified) ? $model->modified->displayname : '-',
-		],
-		[
-			'attribute' => 'updated_date',
-			'value' => Yii::$app->formatter->asDatetime($model->updated_date, 'medium'),
-			'visible' => !$small,
-		],
-	],
+	'attributes' => $attributes,
 ]); ?>

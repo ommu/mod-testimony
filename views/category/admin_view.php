@@ -28,57 +28,60 @@ if (!$small) {
     ];
 } ?>
 
-<?php echo DetailView::widget([
+<?php
+$attributes = [
+    'cat_id',
+    [
+        'attribute' => 'publish',
+        'value' => $this->quickAction(Url::to(['publish', 'id' => $model->primaryKey]), $model->publish),
+        'format' => 'raw',
+    ],
+    [
+        'attribute' => 'rate_status',
+        'value' => $this->quickAction(Url::to(['rate', 'id' => $model->primaryKey]), $model->rate_status, 'Enable,Disable'),
+        'format' => 'raw',
+    ],
+    [
+        'attribute' => 'category_name_i',
+        'value' => isset($model->title) ? $model->title->message : '-',
+    ],
+    [
+        'attribute' => 'category_desc_i',
+        'value' => isset($model->description) ? $model->description->message : '-',
+    ],
+    [
+        'attribute' => 'profile_alow',
+        'value' => serialize($model->profile_alow),
+    ],
+    [
+        'attribute' => 'creation_date',
+        'value' => Yii::$app->formatter->asDatetime($model->creation_date, 'medium'),
+        'visible' => !$small,
+    ],
+    [
+        'attribute' => 'creationDisplayname',
+        'value' => isset($model->creation) ? $model->creation->displayname : '-',
+    ],
+    [
+        'attribute' => 'modified_date',
+        'value' => Yii::$app->formatter->asDatetime($model->modified_date, 'medium'),
+        'visible' => !$small,
+    ],
+    [
+        'attribute' => 'modifiedDisplayname',
+        'value' => isset($model->modified) ? $model->modified->displayname : '-',
+    ],
+    [
+        'attribute' => 'updated_date',
+        'value' => Yii::$app->formatter->asDatetime($model->updated_date, 'medium'),
+        'visible' => !$small,
+    ],
+];
+
+echo DetailView::widget([
 	'model' => $model,
 	'options' => [
 		'class' => 'table table-striped detail-view',
 	],
-	'attributes' => [
-		'cat_id',
-		[
-			'attribute' => 'publish',
-			'value' => $this->quickAction(Url::to(['publish', 'id' => $model->primaryKey]), $model->publish),
-			'format' => 'raw',
-		],
-		[
-			'attribute' => 'rate_status',
-			'value' => $this->quickAction(Url::to(['rate', 'id' => $model->primaryKey]), $model->rate_status, 'Enable,Disable'),
-			'format' => 'raw',
-		],
-		[
-			'attribute' => 'category_name_i',
-			'value' => isset($model->title) ? $model->title->message : '-',
-		],
-		[
-			'attribute' => 'category_desc_i',
-			'value' => isset($model->description) ? $model->description->message : '-',
-		],
-		[
-			'attribute' => 'profile_alow',
-			'value' => serialize($model->profile_alow),
-		],
-		[
-			'attribute' => 'creation_date',
-			'value' => Yii::$app->formatter->asDatetime($model->creation_date, 'medium'),
-			'visible' => !$small,
-		],
-		[
-			'attribute' => 'creationDisplayname',
-			'value' => isset($model->creation) ? $model->creation->displayname : '-',
-		],
-		[
-			'attribute' => 'modified_date',
-			'value' => Yii::$app->formatter->asDatetime($model->modified_date, 'medium'),
-			'visible' => !$small,
-		],
-		[
-			'attribute' => 'modifiedDisplayname',
-			'value' => isset($model->modified) ? $model->modified->displayname : '-',
-		],
-		[
-			'attribute' => 'updated_date',
-			'value' => Yii::$app->formatter->asDatetime($model->updated_date, 'medium'),
-			'visible' => !$small,
-		],
-	],
+	'attributes' => $attributes,
 ]); ?>
