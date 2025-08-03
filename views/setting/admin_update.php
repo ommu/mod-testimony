@@ -68,8 +68,8 @@ array_push($columnData, [
 			return Url::to(['category/view', 'id' => $key]);
         }
         if ($action == 'update') {
-			return Url::to(['category/update', 'id' => $key])
-        };
+			return Url::to(['category/update', 'id' => $key]);
+        }
         if ($action == 'delete') {
 			return Url::to(['category/delete', 'id' => $key]);
         }
